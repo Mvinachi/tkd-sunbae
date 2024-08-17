@@ -1,0 +1,65 @@
+.bracket {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+.match {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.children {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.connector {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  margin-top: -1px;
+}
+
+.children app-bracket {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.connector::before,
+.connector::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background-color: #333;
+  top: 50%;
+}
+
+.connector::before {
+  left: 0;
+}
+
+.connector::after {
+  right: 0;
+}

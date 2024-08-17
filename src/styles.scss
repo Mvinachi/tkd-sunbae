@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: Mariott;
+    src: url("./assets/fonts/Mariott.otf");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  :root {
+    /* Colors: */
+    --primary:  #20576A;
+    --secondary: #8F9EA8
+}
+
+* {
+    margin: 0;
+}
