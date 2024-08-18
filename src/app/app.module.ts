@@ -6,15 +6,19 @@ import { AppComponent } from './app.component';
 import { BracketComponent } from './pages/bracket/bracket.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

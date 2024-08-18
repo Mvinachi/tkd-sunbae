@@ -1,1 +1,53 @@
-<p>landing works!</p>
+<section style="position: relative;">
+    <img src="../../../assets/img/main_bg2.jpg" alt="Imagen de Fondo Principal"
+        style="width: 100%; height: calc(100vh - 3.75rem); object-fit: cover; transform: scaleX(-1); filter: brightness(0.5);">
+
+    <div style="position: absolute; top: 20%; right: 15%; width: 37.5rem;">
+        <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">III
+            Copa Sunbae <br> Taekwondo</h1>
+        <p style="color: white; line-height: 1.5rem;">Participa en la III Copa Sunbae Taekwondo (Kyorugui y Poomsae) del 6 al 8 de septiembre
+            en el Palacio de Combates 'Sugar Baby Rojas'. Competencia para categorías Infantil, Cadete, Junior,
+            y Senior.</p>
+
+            <div id="date-countdown" style="margin-top: 2rem;">
+                <span class="countdown-block">
+                  <span class="label">{{ timeRemaining.weeks }}</span> Semanas
+                </span>
+                <span class="countdown-block">
+                  <span class="label">{{ timeRemaining.days }}</span> Dias
+                </span>
+                <span class="countdown-block">
+                  <span class="label">{{ timeRemaining.hours }}</span> Horas
+                </span>
+                <span class="countdown-block">
+                  <span class="label">{{ timeRemaining.minutes }}</span> Minutos
+                </span>
+                <span class="countdown-block">
+                  <span class="label">{{ timeRemaining.seconds }}</span> Segundos
+                </span>
+              </div>
+              
+        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+            <button
+                style="cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 0.25rem;">
+                <p style="color: white; font-weight: bold;">INSCRIBIRSE</p>
+            </button>
+            <p style="color: white; font-weight: bold;">Mas información</p>
+        </div>
+    </div>
+</section>
+<section style="display: flex; height: calc(100vh - 3.75rem); align-items: center; justify-content: space-around;">
+    <div style="width: 600px;">
+        <p style="margin-bottom: 2rem; font-size: 0.875rem; color: white; padding: 0.5rem; border-radius: 10px; background-color: var(--secondary); width: fit-content;">Sobre nosotros</p>
+        <h1 style="color: #767c8c; width: fit-content; margin-bottom: 1rem;">Quienes somos <strong style="font-family: Mariott; margin-left: 6px; color: var(--primary);">nosotros</strong></h1>
+        <p style="margin-bottom: 1rem;">Nuestra misión es fomentar el amor por este arte marcial coreano, proporcionando una enseñanza de calidad que inspire a nuestros estudiantes a superar sus propios límites.</p>
+        <p>Contamos con sedes en Barranquilla, en el prestigioso Coliseo "Sugar Baby Rojas", y en Soledad, en la Cra 21A # 81A-75 B, Los Almendros, donde nuestros alumnos reciben la mejor preparación tanto en Kyorugui (combate) como en Poomsae (formas).</p>
+    </div>
+    <div style="position: relative; width: 600px;">
+        <div style="background-color: var(--primary); border-radius: 10%; width: 200px; height: 200px;"></div>
+        <div style="position: absolute; background: linear-gradient(to right, var(--secondary), var(--primary)); border-radius: 10%; width: 400px; height: 400px; top: -45px; left: 40px;"></div>
+        <img src="../../../assets/img/img1.webp" alt="" style="position: absolute; width: 300px; height: 300px; border-radius: 0.25rem; object-fit: cover; top: 0; left: -70px;">
+        <img src="../../../assets/img/img2.webp" alt="" style="position: absolute; width: 400px; height: 200px; border-radius: 0.25rem; object-fit: cover; top: -70px; left: 245px;">
+        <img src="../../../assets/img/img3.webp" alt="" style="position: absolute; width: 300px; height: 290px; border-radius: 0.25rem; object-fit: cover; top: 140px; left: 250px;">
+    </div>
+</section>
