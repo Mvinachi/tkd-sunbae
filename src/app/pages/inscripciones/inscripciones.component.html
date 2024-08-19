@@ -1,0 +1,202 @@
+<section>
+    <div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
+
+        <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
+            style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
+
+        <div style="position: absolute;">
+            <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+                Inscripciones</h1>
+                <p style="color: white;">Completa el formulario de inscripción para participar en la III Copa Sunbae Taekwondo</p>
+        </div>
+    </div>
+    <div style="padding: 4.5rem;">
+        <form [formGroup]="form">
+            <div nz-row [nzGutter]="[16, 12]">
+                
+                <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Formulario de Representacion" nzOrientation="left"></nz-divider>
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Departamento al que representa</label>
+                        <nz-select [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Ciudad o Municipio que representa</label>
+                        <nz-select [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Club o Delegación</label>
+                        <input nz-input nzSize="large" style=" color: var(--primary);" />
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del delegado o entrenador</label>
+                        <input nz-input nzSize="large" style=" color: var(--primary);" />
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Requerirá acompañamiento para hospedaje y alimentación?</label>
+                        
+                          <nz-select [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Hospedaje y alimentación'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Solo hospedaje'" [nzValue]="'Option2'"></nz-option>
+                            <nz-option [nzLabel]="'Solo alimentación'" [nzValue]="'Option2'"></nz-option>
+                            <nz-option [nzLabel]="'No'" [nzValue]="'Option2'"></nz-option>
+                            <nz-option [nzLabel]="'No sabe aún'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Numero de contacto para brindarle asistencia</label>
+                        <input nz-input nzSize="large" style=" color: var(--primary);" />
+                    </div>
+                </div>
+
+                <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de Participante" nzOrientation="left"></nz-divider>
+                
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del participante</label>
+                        <input nz-input nzSize="large" style=" color: var(--primary);" />
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Año de nacimiento</label>
+                        <nz-date-picker [nzSize]="'large'"></nz-date-picker>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Categoría</label>
+                        <nz-select nzDisabled [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Peso</label>
+                        <nz-select [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">En caso de eventualidad, indique a qué EPS está afiliado</label>
+                        <nz-select [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                            <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
+                            <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                          </nz-select>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Sexo</label>
+                        <nz-radio-group style="display: flex; flex-direction: row; align-items: center; height: 45px;">
+                            <label nz-radio nzValue="A">Masculino</label>
+                            <label nz-radio nzValue="B">Femenino</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <nz-divider nzOrientation="left"></nz-divider>
+
+                <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las modalidades en que participará</label>
+                        <nz-radio-group  nzSize="large">
+                            <label nz-radio-button nzValue="A">Kyorugui</label>
+                            <label nz-radio-button nzValue="B">Kyorugui y Poomsae</label>
+                            <label nz-radio-button nzValue="C">Poomsae</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de Kyorugui" nzOrientation="left"></nz-divider>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado kyorugui del participante</label>
+                        <nz-radio-group style="display: flex; flex-direction: column;">
+                            <label nz-radio nzValue="A">Novato</label>
+                            <label nz-radio nzValue="B">Principiante</label>
+                            <label nz-radio nzValue="C">Avanzado</label>
+                            <label nz-radio nzValue="C">Negro</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de kyorugui</label>
+                        <nz-radio-group style="display: flex; flex-direction: column;">
+                            <label nz-radio nzValue="A">Individual</label>
+                            <label nz-radio nzValue="B">TK3</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de poomsae" nzOrientation="left"></nz-divider>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado poomsae del participante</label>
+                        <nz-radio-group style="display: flex; flex-direction: column;">
+                            <label nz-radio nzValue="A">Novato</label>
+                            <label nz-radio nzValue="B">Principiante</label>
+                            <label nz-radio nzValue="C">Avanzado</label>
+                            <label nz-radio nzValue="C">Negro</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                    <div style="display: flex; flex-direction: column; width: 100%;">
+                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de poomsae</label>
+                        <nz-radio-group style="display: flex; flex-direction: column;">
+                            <label nz-radio nzValue="A">Individual</label>
+                            <label nz-radio nzValue="B">Equipo de 2</label>
+                            <label nz-radio nzValue="B">Equipo de 3</label>
+                            <label nz-radio nzValue="B">Freestyle</label>
+                          </nz-radio-group>
+                    </div>
+                </div>
+
+                <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}" style="margin-top: 3rem; align-items: center; display: flex; justify-content: center;">
+                    <button
+                    style="width: 20rem; height: 3rem; cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 1.5rem;">
+                    <p style="color: white; font-weight: bold; margin: 0;">INGRESAR</p>
+                </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>

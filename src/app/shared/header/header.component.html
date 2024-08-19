@@ -1,18 +1,27 @@
-<header style="background-color: white; height: 3.75rem; padding: 0.5rem 6rem; box-shadow: 4px 0 20px -5px rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2;">
-    <div style="display: flex; flex-direction: row; align-items: center; gap: 0.75rem;">
-        <img src="../../../assets/img/main_icon.jpeg" alt="Logo Club Sunbae" style="border-radius: 50%; width: 3.125rem; height: 3.125rem;">
+<header
+    style="background-color: white; height: 3.75rem; padding: 0.5rem 6rem; box-shadow: 4px 0 20px -5px rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2;">
+    <div [routerLink]="['/']"
+        style="cursor: pointer; display: flex; flex-direction: row; align-items: center; gap: 0.75rem;">
+        <img src="../../../assets/img/main_icon.jpeg" alt="Logo Club Sunbae"
+            style="border-radius: 50%; width: 3.125rem; height: 3.125rem;">
         <h2 style="font-family: Mariott; color: var(--primary)">Club Sunbae</h2>
     </div>
 
     <div style="display: flex; gap: 1rem; align-items: center;">
-        <a [routerLink]="['/']" [ngClass]="{'active': isActive('/')}" style="text-decoration: none; color: var(--primary);">Home</a>
-        <a href="" style="text-decoration: none; color: var(--primary);">Inscripciones</a>
-        <a href="" style="text-decoration: none; color: var(--primary);">Contactanos</a>
-        <a href="" style="text-decoration: none; color: var(--primary);">|</a>
+        <a [routerLink]="['/']" [ngClass]="{'active': isActive('/')}"
+            style="cursor: pointer; text-decoration: none; color: var(--primary);">Home</a>
+            <nz-divider nzType="vertical"></nz-divider>
+        <a [routerLink]="['/inscripciones']" [ngClass]="{'active': isActive('/inscripciones')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Inscripciones</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a [routerLink]="['/brackets']" [ngClass]="{'active': isActive('/brackets')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Clasificaciones</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a [routerLink]="['/peleadores']" [ngClass]="{'active': isActive('/peleadores')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Peleadores</a>
 
-            <button style="padding: 4px 8px; background-color: var(--primary); border: none; border-radius: 8px;">
-                <fa-icon [icon]="faCircleUser" style="color: white; font-size: 1.5rem;" title="Iniciar Sesion"></fa-icon>
-            </button>
+        <!-- <a href="" style="cursor: pointer; text-decoration: none; color: var(--primary);">|</a>
+        <button [routerLink]="['/login']"
+            style="padding: 4px 8px; background-color: var(--primary); border: none; border-radius: 8px;">
+            <fa-icon [icon]="faCircleUser" style="color: white; font-size: 1.5rem;" title="Iniciar Sesion"></fa-icon>
+        </button> -->
 
     </div>
 </header>

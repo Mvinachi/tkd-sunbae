@@ -1,16 +1,14 @@
-<div class="bracket" style="background-color: blueviolet;">
-  <p>Torneo</p>
-  <!-- <ng-container *ngIf="tournament">
-    <div class="match">
-      <div class="players">
-        <div>{{ tournament.player1 }}</div>
-        <div>{{ tournament.player2 }}</div>
-      </div>
-      <div class="children">
-        <app-bracket *ngIf="tournament.leftChild" [tournament]="tournament.leftChild"></app-bracket>
-        <app-bracket *ngIf="tournament.rightChild" [tournament]="tournament.rightChild"></app-bracket>
-      </div>
+<section>
+  <div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
+    
+    <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
+        style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
+
+    <div style="position: absolute;">
+        <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+            Clasificaciones</h1>
+            <p style="color: white;">Observa la tabala de posiciones de los competidores en la III Copa Sunbae Taekwondo</p>
     </div>
-    <div *ngIf="tournament.leftChild || tournament.rightChild" class="connector"></div>
-  </ng-container> -->
-</div>
+  </div>
+  <div class="brackets-viewer"></div>
+</section>
