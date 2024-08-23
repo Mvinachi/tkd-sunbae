@@ -10,33 +10,58 @@
                 <p style="color: white;">Observa la lista completa de competidores en la III Copa Sunbae Taekwondo</p>
         </div>
     </div>
-    <nz-table nzBordered #filterTable [nzData]="listOfData" nzTableLayout="fixed" [nzPageSize]="25">
-        <thead>
+    <form [formGroup]="form">
+      <nz-input-group nzSize="large" [nzSuffix]="suffixIconSearch">
+        <input formControlName="buscar" (keyup)="searchData()" type="text" nz-input placeholder="Ingresa el nombre, club, categoria, modalidad, etc, que deseas buscar" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </form>
+    <nz-table nzBordered #basicTable [nzPageSize]="20" [nzData]="filteredData">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Años</th>
+          <th>Club o Delegacion</th>
+          <th>Genero</th>
+          <th>Categoria</th>
+          <th>Peso</th>
+          <th>Modalidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (data of basicTable.data; track data) {
           <tr>
-            <th
-              *ngFor="let column of listOfColumns"
-              [nzSortOrder]="column.sortOrder"
-              [nzSortFn]="column.sortFn"
-              [nzSortDirections]="column.sortDirections"
-              [nzFilterMultiple]="column.filterMultiple"
-              [nzFilters]="column.listOfFilter"
-              [nzFilterFn]="column.filterFn"
-            >
-              {{ column.name }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of filterTable.data">
-            <td>{{ data.name }}</td>
+            <td>{{ data.nombre }} {{ data.apellido }}</td>
             <td>{{ data.age }}</td>
             <td>{{ data.club }}</td>
-            <td>{{ data.genero }}</td>
+            <td>{{ data.sexo == 'F' ? 'Femenino' : 'Masculino' }}</td>
             <td>{{ data.categoria }}</td>
             <td>{{ data.peso }}</td>
             <td>{{ data.modalidad }}</td>
           </tr>
+        }
+      </tbody>
+    </nz-table>
+      <!-- nz-table nzBordered #headerTable [nzData]="listOfData" [nzPageSize]="50" [nzScroll]="{ y: '240px' }">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th nzWidth="100px">Age</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of headerTable.data; track data) {
+            <tr>
+              <td>{{ data.name }}</td>
+              <td>{{ data.age }}</td>
+              <td>{{ data.address }}</td>
+            </tr>
+          }
         </tbody>
-      </nz-table>
+      </nz-table -->
 </section>
 

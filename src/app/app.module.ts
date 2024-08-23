@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
@@ -25,6 +24,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { StageType } from 'brackets-model';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(es);
 
@@ -53,7 +54,6 @@ declare global {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     NzGridModule,
@@ -62,7 +62,9 @@ declare global {
     NzRadioModule,
     NzDividerModule,
     NzDatePickerModule,
-    NzTableModule
+    NzTableModule,
+    NzIconModule,
+    HttpClientModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: es_ES },
