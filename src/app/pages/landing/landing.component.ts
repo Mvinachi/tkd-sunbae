@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -8,6 +9,10 @@ import { interval, Subscription } from 'rxjs';
 })
 export class LandingComponent implements OnInit, OnDestroy {
   targetDate: Date = new Date('2024-09-06T00:00:00'); // Establece aquí tu fecha objetivo
+
+  constructor(private router: Router) {
+
+  }
 
   // Inicializar timeRemaining con valores predeterminados
   timeRemaining: { weeks: number; days: number; hours: number; minutes: number; seconds: number } = {
@@ -28,6 +33,10 @@ export class LandingComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  navigate(){
+    this.router.navigate(['/inscripciones'])
   }
 
   private updateCountdown() {

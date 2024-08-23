@@ -25,6 +25,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { StageType } from 'brackets-model';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(es);
@@ -64,6 +67,9 @@ declare global {
     NzDatePickerModule,
     NzTableModule,
     NzIconModule,
+    NzInputNumberModule,
+    NzButtonModule,
+    NzModalModule,
     HttpClientModule
   ],
   providers: [
