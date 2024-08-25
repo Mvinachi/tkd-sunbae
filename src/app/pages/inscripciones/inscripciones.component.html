@@ -17,7 +17,7 @@
                 <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Formulario de Representacion" nzOrientation="left"></nz-divider>
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Departamento al que representa</label>
+                        <label for="" [ngClass]="{'error': form.get('departamento')!.invalid && form.get('departamento')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Departamento al que representa</label>
                         <nz-select [nzStatus]="form.get('departamento')!.invalid && form.get('departamento')!.dirty ? 'error' : ''" formControlName="departamento" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
                             <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
                             <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
@@ -27,8 +27,8 @@
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Ciudad o Municipio que representa</label>
-                        <nz-select formControlName="ciudad" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
+                        <label for="" [ngClass]="{'error': form.get('ciudad')!.invalid && form.get('ciudad')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Ciudad o Municipio que representa</label>
+                        <nz-select [nzStatus]="form.get('ciudad')!.invalid && form.get('ciudad')!.dirty ? 'error' : ''" formControlName="ciudad" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
                             <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
                             <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
                           </nz-select>
@@ -37,23 +37,22 @@
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Club o Delegación</label>
-                        <input formControlName="club" nz-input nzSize="large" style=" color: var(--primary);" />
+                        <label [ngClass]="{'error': form.get('club')!.invalid && form.get('club')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Club o Delegación</label>
+                        <input [nzStatus]="form.get('club')!.invalid && form.get('club')!.dirty ? 'error' : ''" formControlName="club" nz-input nzSize="large" style=" color: var(--primary);" />
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del delegado o entrenador</label>
-                        <input formControlName="entrenador" nz-input nzSize="large" style=" color: var(--primary);" />
+                        <label [ngClass]="{'error': form.get('entrenador')!.invalid && form.get('entrenador')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del delegado o entrenador</label>
+                        <input [nzStatus]="form.get('entrenador')!.invalid && form.get('entrenador')!.dirty ? 'error' : ''" formControlName="entrenador" nz-input nzSize="large" style=" color: var(--primary);" />
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Requerirá acompañamiento para hospedaje y alimentación?</label>
-                        
-                          <nz-select formControlName="alimentacion" nzShowSearch nzAllowClear [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                        <label [ngClass]="{'error': form.get('alimentacion')!.invalid && form.get('alimentacion')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Requerirá acompañamiento para hospedaje y alimentación?</label>
+                          <nz-select [nzStatus]="form.get('alimentacion')!.invalid && form.get('alimentacion')!.dirty ? 'error' : ''" formControlName="alimentacion" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
                             <nz-option [nzLabel]="'Hospedaje y alimentación'" [nzValue]="'Option1'"></nz-option>
                             <nz-option [nzLabel]="'Solo hospedaje'" [nzValue]="'Option2'"></nz-option>
                             <nz-option [nzLabel]="'Solo alimentación'" [nzValue]="'Option2'"></nz-option>
@@ -65,8 +64,8 @@
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Numero de contacto para brindarle asistencia</label>
-                        <input formControlName="numeroAsistencia" nz-input nzSize="large" style=" color: var(--primary);" />
+                        <label [ngClass]="{'error': form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Numero de contacto para brindarle asistencia</label>
+                        <input [nzStatus]="form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty ? 'error' : ''" formControlName="numeroAsistencia" nz-input nzSize="large" style=" color: var(--primary);" />
                     </div>
                 </div>
 
@@ -74,44 +73,42 @@
                 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del participante</label>
-                        <input formControlName="nombre" nz-input nzSize="large" style=" color: var(--primary);" />
+                        <label [ngClass]="{'error': form.get('nombre')!.invalid && form.get('nombre')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Nombre del participante</label>
+                        <input [nzStatus]="form.get('nombre')!.invalid && form.get('nombre')!.dirty ? 'error' : ''" formControlName="nombre" nz-input nzSize="large" style=" color: var(--primary);" />
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Año de nacimiento</label>
-                        <nz-date-picker formControlName="edad" [nzSize]="'large'"></nz-date-picker>
+                        <label [ngClass]="{'error': form.get('edad')!.invalid && form.get('edad')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Año de nacimiento</label>
+                        <nz-date-picker [nzStatus]="form.get('edad')!.invalid && form.get('edad')!.dirty ? 'error' : ''" formControlName="edad" [nzSize]="'large'"></nz-date-picker>
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Peso</label>
-                          
-                            <nz-input-number [(ngModel)]="demoValue" [nzMin]="1" [nzSize]="'large'"
+                        <label [ngClass]="{'error': form.get('peso')!.invalid && form.get('peso')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Peso</label>
+                            <nz-input-number [nzStatus]="form.get('peso')!.invalid && form.get('peso')!.dirty ? 'error' : ''" [(ngModel)]="demoValue" [nzMin]="1" [nzSize]="'large'"
                             [nzStep]="1"
                             [nzFormatter]="formatterKg"
                             [nzParser]="parserKg" formControlName="peso" style="width: 100%"></nz-input-number>
-                          
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Sexo</label>
+                        <label [ngClass]="{'error': form.get('sexo')!.invalid && form.get('sexo')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Sexo</label>
                         <nz-radio-group formControlName="sexo" style="display: flex; flex-direction: row; align-items: center; height: 45px;">
-                            <label nz-radio nzValue="A">Masculino</label>
-                            <label nz-radio nzValue="B">Femenino</label>
+                            <label [ngClass]="{'error': form.get('sexo')!.invalid && form.get('sexo')!.dirty}" nz-radio nzValue="A" >Masculino</label>
+                            <label [ngClass]="{'error': form.get('sexo')!.invalid && form.get('sexo')!.dirty}" nz-radio nzValue="B">Femenino</label>
                           </nz-radio-group>
                     </div>
                 </div>
 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">En caso de eventualidad, indique a qué EPS está afiliado</label>
-                        <nz-select formControlName="eps" nzShowSearch nzAllowClear [ngModel]="'Option1'" [nzSize]="'large'" style="color: var(--primary);">
+                        <label [ngClass]="{'error': form.get('eps')!.invalid && form.get('eps')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">En caso de eventualidad, indique a qué EPS está afiliado</label>
+                        <nz-select [nzStatus]="form.get('eps')!.invalid && form.get('eps')!.dirty ? 'error' : ''" formControlName="eps" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
                             <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
                             <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
                           </nz-select>
@@ -122,11 +119,11 @@
 
                 <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
-                        <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las modalidades en que participará</label>
+                        <label [ngClass]="{'error': form.get('modalidad')!.invalid && form.get('modalidad')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las modalidades en que participará</label>
                         <nz-radio-group formControlName="modalidad" nzSize="large">
-                            <label nz-radio-button nzValue="K">Kyorugui</label>
-                            <label nz-radio-button nzValue="KP">Kyorugui y Poomsae</label>
-                            <label nz-radio-button nzValue="P">Poomsae</label>
+                            <label [ngClass]="{'error': form.get('modalidad')!.invalid && form.get('modalidad')!.dirty}" nz-radio-button nzValue="K">Kyorugui</label>
+                            <label [ngClass]="{'error': form.get('modalidad')!.invalid && form.get('modalidad')!.dirty}" nz-radio-button nzValue="KP">Kyorugui y Poomsae</label>
+                            <label [ngClass]="{'error': form.get('modalidad')!.invalid && form.get('modalidad')!.dirty}" nz-radio-button nzValue="P">Poomsae</label>
                           </nz-radio-group>
                     </div>
                 </div>
@@ -137,7 +134,7 @@
 
                         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column;" formArrayName="kyoLista">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las categorías en las que quiera inscribirse</label>
+                                <label [ngClass]="{'error': form.get('kyoLista')!.invalid && form.get('kyoLista')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las categorías en las que quiera inscribirse</label>
                                 <div *ngFor="let item of kyoLista?.controls; let i = index" [formGroupName]="i" style="display: flex; flex-direction: row;">
                                     <nz-select nzShowSearch nzAllowClear [nzSize]="'large'" formControlName="categoria"
                                         style="color: var(--primary); width: 100%; margin-bottom: 1rem;">
@@ -154,21 +151,21 @@
                         </div>        
                         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column; width: 100%;">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado kyorugui del participante</label>
+                                <label [ngClass]="{'error': form.get('gradoKyo')!.invalid && form.get('gradoKyo')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado kyorugui del participante</label>
                                 <nz-radio-group formControlName="gradoKyo" style="display: flex; flex-direction: column;">
-                                    <label nz-radio nzValue="A">Novato</label>
-                                    <label nz-radio nzValue="B">Principiante</label>
-                                    <label nz-radio nzValue="C">Avanzado</label>
-                                    <label nz-radio nzValue="C">Negro</label>
+                                    <label [ngClass]="{'error': form.get('gradoKyo')!.invalid && form.get('gradoKyo')!.dirty}" nz-radio nzValue="A">Novato</label>
+                                    <label [ngClass]="{'error': form.get('gradoKyo')!.invalid && form.get('gradoKyo')!.dirty}" nz-radio nzValue="B">Principiante</label>
+                                    <label [ngClass]="{'error': form.get('gradoKyo')!.invalid && form.get('gradoKyo')!.dirty}" nz-radio nzValue="C">Avanzado</label>
+                                    <label [ngClass]="{'error': form.get('gradoKyo')!.invalid && form.get('gradoKyo')!.dirty}" nz-radio nzValue="D">Negro</label>
                                   </nz-radio-group>
                             </div>
                         </div>
                         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column; width: 100%;">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de kyorugui</label>
+                                <label [ngClass]="{'error': form.get('tipoKyo')!.invalid && form.get('tipoKyo')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de kyorugui</label>
                                 <nz-radio-group formControlName="tipoKyo" style="display: flex; flex-direction: column;">
-                                    <label nz-radio nzValue="A">Individual</label>
-                                    <label nz-radio nzValue="B">TK3</label>
+                                    <label [ngClass]="{'error': form.get('tipoKyo')!.invalid && form.get('tipoKyo')!.dirty}" nz-radio nzValue="A">Individual</label>
+                                    <label [ngClass]="{'error': form.get('tipoKyo')!.invalid && form.get('tipoKyo')!.dirty}" nz-radio nzValue="B">TK3</label>
                                   </nz-radio-group>
                             </div>
                         </div>
@@ -181,7 +178,7 @@
 
                         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column;" formArrayName="poomLista">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las categorías en las que quiera inscribirse</label>
+                                <label [ngClass]="{'error': form.get('poomLista')!.invalid && form.get('poomLista')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione las categorías en las que quiera inscribirse</label>
                                 <div *ngFor="let item of poomLista?.controls; let i = index" [formGroupName]="i" style="display: flex; flex-direction: row;">
                                     <nz-select nzShowSearch nzAllowClear [nzSize]="'large'" formControlName="categoria"
                                         style="color: var(--primary); width: 100%; margin-bottom: 1rem;">
@@ -198,23 +195,23 @@
                         </div>
                         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column; width: 100%;">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado poomsae del participante</label>
+                                <label [ngClass]="{'error': form.get('gradoPoom')!.invalid && form.get('gradoPoom')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione grado poomsae del participante</label>
                                 <nz-radio-group formControlName="gradoPoom" style="display: flex; flex-direction: column;">
-                                    <label nz-radio nzValue="A">Novato</label>
-                                    <label nz-radio nzValue="B">Principiante</label>
-                                    <label nz-radio nzValue="C">Avanzado</label>
-                                    <label nz-radio nzValue="C">Negro</label>
+                                    <label [ngClass]="{'error': form.get('gradoPoom')!.invalid && form.get('gradoPoom')!.dirty}" nz-radio nzValue="A">Novato</label>
+                                    <label [ngClass]="{'error': form.get('gradoPoom')!.invalid && form.get('gradoPoom')!.dirty}" nz-radio nzValue="B">Principiante</label>
+                                    <label [ngClass]="{'error': form.get('gradoPoom')!.invalid && form.get('gradoPoom')!.dirty}" nz-radio nzValue="C">Avanzado</label>
+                                    <label [ngClass]="{'error': form.get('gradoPoom')!.invalid && form.get('gradoPoom')!.dirty}" nz-radio nzValue="D">Negro</label>
                                   </nz-radio-group>
                             </div>
                         </div>
                         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column; width: 100%;">
-                                <label for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de poomsae</label>
+                                <label [ngClass]="{'error': form.get('tipoPoom')!.invalid && form.get('tipoPoom')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Seleccione el tipo de poomsae</label>
                                 <nz-radio-group formControlName="tipoPoom" style="display: flex; flex-direction: column;">
-                                    <label nz-radio nzValue="A">Individual</label>
-                                    <label nz-radio nzValue="B">Equipo de 2</label>
-                                    <label nz-radio nzValue="B">Equipo de 3</label>
-                                    <label nz-radio nzValue="B">Freestyle</label>
+                                    <label [ngClass]="{'error': form.get('tipoPoom')!.invalid && form.get('tipoPoom')!.dirty}"  nz-radio nzValue="A">Individual</label>
+                                    <label [ngClass]="{'error': form.get('tipoPoom')!.invalid && form.get('tipoPoom')!.dirty}"  nz-radio nzValue="B">Equipo de 2</label>
+                                    <label [ngClass]="{'error': form.get('tipoPoom')!.invalid && form.get('tipoPoom')!.dirty}"  nz-radio nzValue="C">Equipo de 3</label>
+                                    <label [ngClass]="{'error': form.get('tipoPoom')!.invalid && form.get('tipoPoom')!.dirty}"  nz-radio nzValue="D">Freestyle</label>
                                   </nz-radio-group>
                             </div>
                         </div>

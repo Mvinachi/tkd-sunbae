@@ -7,7 +7,6 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
-import { RankingsComponent } from './pages/rankings/rankings.component';
 import { TotalPeleadoresComponent } from './pages/total-peleadores/total-peleadores.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -29,6 +28,8 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { HttpClientModule } from '@angular/common/http';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 registerLocaleData(es);
 
@@ -51,8 +52,9 @@ declare global {
     FooterComponent,
     LoginComponent,
     InscripcionesComponent,
-    RankingsComponent,
-    TotalPeleadoresComponent
+    TotalPeleadoresComponent,
+    LeaderboardComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

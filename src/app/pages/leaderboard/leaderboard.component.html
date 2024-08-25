@@ -1,0 +1,42 @@
+<!-- <section style="color: var(--primary); padding: 2rem; font-size: 1rem; gap: 1rem; display: flex; flex-direction: row; align-items: center; font-weight: bold;">
+    <span (click)="back()" nz-icon nzType="left" nzTheme="outline"></span>
+    <p style="margin: 0; font-family: Mariott;">Tabla de Posiciones </p>
+</section> -->
+<div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
+    
+    <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
+        style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
+
+    <div style="position: absolute;">
+        <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+            Tabla de Posiciones</h1>
+            <p style="color: white;">Observa la tabla de posiciones de los competidores en la III Copa Sunbae Taekwondo</p>
+    </div>
+  </div>
+<section style="padding: 2rem;">
+    <div nz-row [nzGutter]="[16, 12]">            
+        <div *ngFor="let item of DataTablas" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+            <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="item.categoria" nzOrientation="left"></nz-divider>
+            <nz-table nzBordered #basicTable [nzPageSize]="10" [nzData]="item.dataPersonas" [nzShowPagination]="false">
+                <thead>
+                  <tr>
+                    <th>Posicion</th>
+                    <th>Nombre</th>
+                    <th>Club o Delegacion</th>
+                    <th>Peso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (data of basicTable.data; track data) {
+                    <tr>
+                      <td>{{ data.posicion }}</td>
+                      <td>{{ data.nombre }} {{ data.apellido }}</td>
+                      <td>{{ data.club }}</td>
+                      <td>{{ data.peso }} Kg</td>
+                    </tr>
+                  }
+                </tbody>
+              </nz-table>
+        </div>
+    </div>
+</section>
