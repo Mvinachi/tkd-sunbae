@@ -16,12 +16,7 @@
         <a [routerLink]="['/menu']" [ngClass]="{'active': isActive('/menu')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Clasificaciones</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a [routerLink]="['/peleadores']" [ngClass]="{'active': isActive('/peleadores')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Peleadores</a>
-
-        <!-- <a href="" style="cursor: pointer; text-decoration: none; color: var(--primary);">|</a>
-        <button [routerLink]="['/login']"
-            style="padding: 4px 8px; background-color: var(--primary); border: none; border-radius: 8px;">
-            <fa-icon [icon]="faCircleUser" style="color: white; font-size: 1.5rem;" title="Iniciar Sesion"></fa-icon>
-        </button> -->
-
+        <nz-divider nzType="vertical"></nz-divider>
+        <span [routerLink]="['/login']" nz-icon nzType="user" nzTheme="outline" style="font-size: 1.5rem; color: var(--primary);"></span>
     </div>
 </header>
