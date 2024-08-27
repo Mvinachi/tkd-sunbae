@@ -30,6 +30,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { BracketComponent } from './pages/bracket/bracket.component';
 
 registerLocaleData(es);
 
@@ -54,7 +55,8 @@ declare global {
     InscripcionesComponent,
     TotalPeleadoresComponent,
     LeaderboardComponent,
-    MenuComponent
+    MenuComponent,
+    BracketComponent
   ],
   imports: [
     BrowserModule,

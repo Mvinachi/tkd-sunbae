@@ -1,0 +1,85 @@
+.btn-image {
+    width: 50%;
+    height: calc(100vh - 3.75rem);
+    position: relative;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: calc(100vh - 3.75rem);
+        object-fit: cover;
+        filter: brightness(0.2);
+    }
+
+        .btn-label {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+
+            label {
+                font-family: Mariott;
+                font-size: 1.5rem;
+            }
+
+            span {
+                font-size: 3rem;
+            }
+        }
+
+}
+
+ .btn-image:hover {
+     img {
+         animation: btn-effect 0.5s ease forwards;
+     }
+
+     .btn-label {
+        label {
+            animation: lbl-effect 0.5s ease forwards;
+        }
+
+        span {
+            animation: icon-effect 0.5s ease forwards;
+        }
+     }
+ }
+
+ @keyframes btn-effect {
+    0% {
+        width: 100%;
+        filter: brightness(0.2);
+    }
+
+    100% {
+        width: 120%;
+        filter: brightness(0.5);
+    }
+ }
+
+ @keyframes lbl-effect {
+    0% {
+        font-size: 1.5rem;
+    }
+
+    100% {
+        font-size: 2.5rem;
+    }
+ }
+
+ @keyframes icon-effect {
+    0% {
+        font-size: 3rem;
+    }
+
+    100% {
+        font-size: 8rem;
+    }
+ }

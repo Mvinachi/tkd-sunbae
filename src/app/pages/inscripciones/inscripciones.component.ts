@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -16,17 +17,20 @@ export class InscripcionesComponent implements OnInit {
   formatterKg = (value: number): string => `${value} Kg`;
   parserKg = (value: string): string => value.replace(' Kg', '');
 
+  selectKyo: any[] = [];
+  selectPoom: any[] = []
+
   get kyoLista() {
     return this.form.get('kyoLista') as FormArray;
   }
-
   get poomLista() {
     return this.form.get('poomLista') as FormArray;
   }
   
   constructor(
     private formBuilder: FormBuilder,
-    private modal: NzModalService
+    private modal: NzModalService,
+    private http: HttpClient
   ) {
 
     this.form = this.formBuilder.group({
@@ -58,6 +62,9 @@ export class InscripcionesComponent implements OnInit {
   ngOnInit(): void {
     this.agregarFormKyo()
     this.agregarFormPoom()
+
+    this.getCategoriasKyo();
+    this.getCategoriasPoom();
 
     this.form.get('modalidad')
       ?.valueChanges.pipe(debounceTime(100))
@@ -111,7 +118,7 @@ export class InscripcionesComponent implements OnInit {
 
   sendForm() {
     if (this.form.valid) {
-      
+      console.log("Es valido");
     } else{
       this.formTouched(this.form)
       // this.form.get('departamento')?.markAsDirty
@@ -120,5 +127,23 @@ export class InscripcionesComponent implements OnInit {
         nzContent: 'El formulario de inscripcion no pudo ser enviado, verifique que todos los campos esten correctos'
       });
     }
+  }
+
+  getCategoriasKyo() {
+    this.http.get('http://localhost:3300/categoriascombate')
+      .subscribe((data: any) => {
+        this.selectKyo = data.data
+      }, error => {
+        console.error('Error al obtener los datos', error);
+      });
+  }
+
+  getCategoriasPoom() {
+    this.http.get('http://localhost:3300/categoriaspoomsae')
+      .subscribe((data: any) => {
+        this.selectPoom = data.data
+      }, error => {
+        console.error('Error al obtener los datos', error);
+      });
   }
 }

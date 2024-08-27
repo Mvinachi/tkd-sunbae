@@ -27,7 +27,10 @@ export class TotalPeleadoresComponent implements OnInit {
   listOfData: any[] = []
 
   ngOnInit() {
-    // Hacer la solicitud GET
+      this.getPeleadores();
+  }
+
+  getPeleadores() {
     this.http.get('http://localhost:3300/torneo')
       .subscribe((data: any) => {
         this.listOfData = data.data;
@@ -35,7 +38,6 @@ export class TotalPeleadoresComponent implements OnInit {
       }, error => {
         console.error('Error al obtener los datos', error);
       });
-      
   }
 
   searchData(): void {

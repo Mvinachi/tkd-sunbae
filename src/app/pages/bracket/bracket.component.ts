@@ -303,8 +303,10 @@ db.setData({
   styleUrl: './bracket.component.scss'
 })
 export class BracketComponent implements OnInit {
-  ngOnInit() {
 
+    displayBoolean: boolean = false
+
+  ngOnInit() {
     if (window.bracketsViewer) {
         window.bracketsViewer.addLocale('en', {
             common: {
@@ -322,6 +324,14 @@ export class BracketComponent implements OnInit {
         process(dataset4).then((data) => window.bracketsViewer.render(data));
     } else {
         console.error('bracketsViewer is not defined');
+    }
+}
+
+display() {
+    if (this.displayBoolean) {
+        this.displayBoolean = false;
+    } else {
+        this.displayBoolean = true;
     }
 }
 

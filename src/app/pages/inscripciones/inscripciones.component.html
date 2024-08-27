@@ -138,8 +138,7 @@
                                 <div *ngFor="let item of kyoLista?.controls; let i = index" [formGroupName]="i" style="display: flex; flex-direction: row;">
                                     <nz-select nzShowSearch nzAllowClear [nzSize]="'large'" formControlName="categoria"
                                         style="color: var(--primary); width: 100%; margin-bottom: 1rem;">
-                                        <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
-                                        <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                                        <nz-option *ngFor="let categoria of selectKyo" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriac"></nz-option>
                                     </nz-select>
                                     <button (click)="agregarFormKyo()" *ngIf="i == 0" nz-button nzType="primary" [nzSize]="'large'" style="margin: 0 0 1rem 1rem; font-weight: 500; font-family: Montserrat;">
                                         <span nz-icon nzType="plus"></span>
@@ -182,8 +181,7 @@
                                 <div *ngFor="let item of poomLista?.controls; let i = index" [formGroupName]="i" style="display: flex; flex-direction: row;">
                                     <nz-select nzShowSearch nzAllowClear [nzSize]="'large'" formControlName="categoria"
                                         style="color: var(--primary); width: 100%; margin-bottom: 1rem;">
-                                        <nz-option [nzLabel]="'Option1'" [nzValue]="'Option1'"></nz-option>
-                                        <nz-option [nzLabel]="'Option2'" [nzValue]="'Option2'"></nz-option>
+                                        <nz-option *ngFor="let categoria of selectPoom" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriap"></nz-option>
                                     </nz-select>
                                     <button (click)="agregarFormPoom()" *ngIf="i == 0" nz-button nzType="primary" [nzSize]="'large'" style="margin: 0 0 1rem 1rem; font-weight: 500; font-family: Montserrat;">
                                         <span nz-icon nzType="plus"></span>
