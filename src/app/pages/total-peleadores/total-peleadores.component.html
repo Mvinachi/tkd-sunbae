@@ -42,11 +42,11 @@
             <td>{{ data.peso }}</td>
             <td>{{ data.modalidad }}</td>
             <td style="display: flex; flex-direction: row; gap: 1rem;">
-              <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
+              <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
                 <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 16px;"></span>
                 <p style="margin: 0;">Editar</p>
               </div>
-              <div style="display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #FF4D4F">
+              <div (click)="deleteForm(data.id_deportista)" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #FF4D4F">
                 <span nz-icon nzType="delete" nzTheme="outline" style="font-size: 16px;"></span>
                 <p style="margin: 0;">Eliminar</p>
               </div>

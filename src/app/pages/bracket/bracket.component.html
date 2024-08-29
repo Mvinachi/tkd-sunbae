@@ -1,6 +1,6 @@
 <section>
   <div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
-    
+
     <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
         style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
 
@@ -12,10 +12,36 @@
   </div>
 
   <div style="padding: 0 3.125rem;">
+    <form [formGroup]="form">
+      <div nz-row [nzGutter]="[16, 12]">
+          
+          <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Selecciona un bracket" nzOrientation="left"></nz-divider>
+
+          <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+              <div style="display: flex; flex-direction: column; width: 100%;">
+                  <label [ngClass]="{'error': form.get('codigoc')!.invalid && form.get('codigoc')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">COMBATES</label>
+                    <nz-select [nzStatus]="form.get('codigoc')!.invalid && form.get('codigoc')!.dirty ? 'error' : ''" formControlName="codigoc" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
+                      <nz-option *ngFor="let categoria of selectKyo" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriac"></nz-option>
+                    </nz-select>
+              </div>
+          </div>
+
+          <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+            <div style="display: flex; flex-direction: column; width: 100%;">
+                <label [ngClass]="{'error': form.get('codigop')!.invalid && form.get('codigop')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">POOMSE</label>
+                  <nz-select [nzStatus]="form.get('codigop')!.invalid && form.get('codigop')!.dirty ? 'error' : ''" formControlName="codigop" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
+                    <nz-option *ngFor="let categoria of selectPoom" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriap"></nz-option>
+                  </nz-select>
+            </div>
+        </div>
+          
+      </div>
+  </form>
     <nz-divider style="font-family: Mariott; color: var(--primary);" nzOrientation="left"></nz-divider>
   </div>
 
-  <div [ngClass]="{'view': displayBoolean}" style="opacity: 0;">
+  <div>
+    <!-- [ngClass]="{'view': displayBoolean}" style="opacity: 0;" -->
     <div class="brackets-viewer"></div>
   </div>
 

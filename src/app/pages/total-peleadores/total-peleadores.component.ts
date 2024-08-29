@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-total-peleadores',
@@ -14,6 +15,7 @@ export class TotalPeleadoresComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
+    private modal: NzModalService,
     private http: HttpClient
   ) {
 
@@ -62,5 +64,30 @@ export class TotalPeleadoresComponent implements OnInit {
         this.filteredData = [...this.listOfData]; // Restablece todos los datos si no hay búsqueda
     }
 }
+
+deleteForm(id: number) {
+
+      let data = {
+        id_deportista: id
+      }
+
+      this.http.post('http://localhost:3300/torneo/eliminar', data)
+      .subscribe(
+        (response: any) => {
+          const modal = this.modal.success({
+            nzTitle: 'Exitoso',
+            nzContent: response.message
+          });
+
+          modal.afterClose.subscribe(result => {
+            this.getPeleadores();
+          })
+        },
+        error => {
+          console.error('Error al enviar los datos', error);
+        }
+      )
+  }
+
   
 }

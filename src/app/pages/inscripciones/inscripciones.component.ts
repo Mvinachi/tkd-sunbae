@@ -18,7 +18,7 @@ export class InscripcionesComponent implements OnInit {
   parserKg = (value: string): string => value.replace(' Kg', '');
 
   selectKyo: any[] = [];
-  selectPoom: any[] = []
+  selectPoom: any[] = [];
 
   get kyoLista() {
     return this.form.get('kyoLista') as FormArray;
@@ -42,27 +42,22 @@ export class InscripcionesComponent implements OnInit {
       numeroAsistencia: [null, [Validators.required]],
       //------------------
       nombre: [null, [Validators.required]],
+      apellido: [null, [Validators.required]],
       edad: [null, [Validators.required]],
       peso: [null, [Validators.required]],
       eps: [null, [Validators.required]],
       sexo: [null, [Validators.required]],
       modalidad: [null, [Validators.required]],
+      token: [null, [Validators.required]],
       //-------------------
       kyoLista: this.formBuilder.array([]),
-      gradoKyo: [null, [Validators.required]],
-      tipoKyo: [null, [Validators.required]],
       //-------------------
       poomLista: this.formBuilder.array([]),
-      gradoPoom: [null, [Validators.required]],
-      tipoPoom: [null, [Validators.required]],
     });
     
   }
 
   ngOnInit(): void {
-    this.agregarFormKyo()
-    this.agregarFormPoom()
-
     this.getCategoriasKyo();
     this.getCategoriasPoom();
 
@@ -71,10 +66,10 @@ export class InscripcionesComponent implements OnInit {
       .subscribe((res) => {
         if (res == 'K') {
           this.poomLista.clear()
-          this.agregarFormPoom()
+          this.agregarFormKyo()
         } else if(res == 'P') {
           this.kyoLista.clear()
-          this.agregarFormKyo()
+          this.agregarFormPoom()
         }
       });
   }
@@ -116,12 +111,51 @@ export class InscripcionesComponent implements OnInit {
     }
   }
 
+  combineCategorias(array1?: any[]) {
+    let categorias = array1?.map(item => item.categoria);
+
+    return categorias;
+  }
+
   sendForm() {
     if (this.form.valid) {
-      console.log("Es valido");
+
+      let newData = {
+        nombre: this.form.get('nombre')?.value,
+        apellido: this.form.get('apellido')?.value,
+        sexo: this.form.get('sexo')?.value,
+        peso: this.form.get('peso')?.value,
+        club: this.form.get('club')?.value,
+        departamento: this.form.get('departamento')?.value,
+        ciudad: this.form.get('ciudad')?.value,
+        entrenador: this.form.get('entrenador')?.value,
+        numeroasistencia: parseInt(this.form.get('numeroAsistencia')?.value),
+        nacimiento: this.form.get('edad')?.value,
+        eps: this.form.get('eps')?.value,
+        hospedaje: this.form.get('alimentacion')?.value,
+        id_categorias: this.form.get('modalidad')?.value == 'K' ? this.combineCategorias(this.form.get('kyoLista')?.value) : this.combineCategorias(this.form.get('poomLista')?.value)
+    }
+
+      this.http.post(this.form.get('modalidad')?.value == 'K' ? 'http://localhost:3300/inscribirdeportistacombate' : 'http://localhost:3300/inscribirdeportistapoomsae', newData)
+      .subscribe(
+        (response: any) => {
+          this.modal.success({
+            nzTitle: 'Exitoso',
+            nzContent: response
+          });
+          // Maneja la respuesta como desees, por ejemplo, actualizando la lista de categorías
+        },
+        error => {
+          console.error('Error al enviar los datos', error);
+        }
+      );
     } else{
       this.formTouched(this.form)
-      // this.form.get('departamento')?.markAsDirty
+
+      console.log(this.form.get('kyoLista')?.value);
+      console.log(this.form.get('poomLista')?.value);
+      
+      
       this.modal.error({
         nzTitle: 'Error',
         nzContent: 'El formulario de inscripcion no pudo ser enviado, verifique que todos los campos esten correctos'
@@ -146,4 +180,6 @@ export class InscripcionesComponent implements OnInit {
         console.error('Error al obtener los datos', error);
       });
   }
+
+
 }
