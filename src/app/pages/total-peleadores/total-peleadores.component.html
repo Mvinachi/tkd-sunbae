@@ -22,26 +22,28 @@
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Años</th>
+          <th>Edad</th>
           <th>Club o Delegacion</th>
           <th>Genero</th>
-          <th>Categoria</th>
           <th>Peso</th>
+          <th>Categorias</th>
           <th>Modalidad</th>
-          <th>Acciones</th>
+          <th *ngIf="user == 'admin'">Acciones</th>
         </tr>
       </thead>
       <tbody>
         @for (data of basicTable.data; track data) {
           <tr>
             <td>{{ data.nombre }} {{ data.apellido }}</td>
-            <td>{{ data.age }}</td>
+            <td>{{ calculateAge(data.nacimiento) }}</td>
             <td>{{ data.club }}</td>
             <td>{{ data.sexo == 'F' ? 'Femenino' : 'Masculino' }}</td>
-            <td>{{ data.categoria }}</td>
             <td>{{ data.peso }}</td>
-            <td>{{ data.modalidad }}</td>
-            <td style="display: flex; flex-direction: row; gap: 1rem;">
+            <td>
+              <p *ngFor="let item of data.categorias" style="margin: 0;">{{ item }}</p>
+            </td>
+            <td>{{ data.modalidad == 'poomsae' ? 'Poomsae' : 'Kyorugui'}}</td>
+            <td *ngIf="user == 'admin'" style="display: flex; flex-direction: row; gap: 1rem;">
               <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
                 <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 16px;"></span>
                 <p style="margin: 0;">Editar</p>

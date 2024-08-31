@@ -12,12 +12,18 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 export class TotalPeleadoresComponent implements OnInit {
 
   form: FormGroup
+  user:string = ''
+  pass:string = ''
   
   constructor(
     private formBuilder: FormBuilder,
     private modal: NzModalService,
     private http: HttpClient
   ) {
+
+    this.user = sessionStorage.getItem('user') ? sessionStorage.getItem('user')! : '';
+    console.log(this.user);
+    
 
     this.form = this.formBuilder.group({
       buscar: [null],
@@ -87,6 +93,21 @@ deleteForm(id: number) {
           console.error('Error al enviar los datos', error);
         }
       )
+  }
+
+  calculateAge(birthDateString: string): number {
+    const birthDate = new Date(birthDateString);
+    const today = new Date();
+  
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+  
+    // Verifica si el mes o día actual es antes del mes o día de nacimiento
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+  
+    return age;
   }
 
   

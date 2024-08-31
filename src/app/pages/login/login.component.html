@@ -3,21 +3,21 @@
     <div style=" padding: 2rem; display: flex; flex-direction: row; gap: 1rem; justify-content: center;">
         <img src="../../../assets/img/main_icon.jpeg" alt="" style="width: 500px; height: 500px;">
         <div style="background-color: var(--primary); color: var(--primary); border-radius: 10px;">|</div>
-        <form style="display: flex; flex-direction: column; width: 500px; justify-content: center; gap: 1rem; margin-left: 6rem; color: var(--primary);">
+        <form [formGroup]="form" style="display: flex; flex-direction: column; width: 500px; justify-content: center; gap: 1rem; margin-left: 6rem; color: var(--primary);">
             <div style="display: flex; flex-direction: column;">
                 <label for="" style="margin-bottom: 6px;">Usuario</label>
-                <input type="text" style="height: 2.5rem; border-radius: 0.5rem; font-size: 1rem; padding-left: 1rem;">
+                <input formControlName="nombre" type="text" style="height: 2.5rem; border-radius: 0.5rem; font-size: 1rem; padding-left: 1rem;">
             </div>
             <div style="display: flex; flex-direction: column;">
                 <label for="" style="margin-bottom: 6px;">Contraseña</label>
-                <input type="password" style="height: 2.5rem; border-radius: 0.5rem; font-size: 1rem; padding-left: 1rem;">
+                <input formControlName="pass" type="password" style="height: 2.5rem; border-radius: 0.5rem; font-size: 1rem; padding-left: 1rem;">
             </div>
             <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
-                <button
+                <button (click)="sendForm()"
                     style="width: 15rem; height: 3rem; cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 1.5rem;">
                     <p style="color: white; font-weight: bold;">INGRESAR</p>
                 </button>
-                <p style="margin-top: 3rem;">Aun no tienes una cuenta? <strong style="font-family: Mariott; cursor: pointer;">Registrate</strong></p>
+                <!-- <p style="margin-top: 3rem;">Aun no tienes una cuenta? <strong style="font-family: Mariott; cursor: pointer;">Registrate</strong></p> -->
             </div>
         </form>
     </div>

@@ -16,25 +16,20 @@
 <section style="padding: 2rem;">
     <div nz-row [nzGutter]="[16, 12]">            
         <div *ngFor="let item of DataTablas" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
-            <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="item.categoria" nzOrientation="left"></nz-divider>
-            <nz-table nzBordered #basicTable [nzPageSize]="10" [nzData]="item.dataPersonas" [nzShowPagination]="false">
+            <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="item.nombre_categoria" nzOrientation="left"></nz-divider>
+            <nz-table nzBordered #basicTable [nzPageSize]="10" [nzData]="item.topFour" [nzShowPagination]="false">
                 <thead>
                   <tr>
-                    <th>Posicion</th>
+                    <th nzWidth="100px">Posicion</th>
                     <th>Nombre</th>
-                    <th>Club o Delegacion</th>
-                    <th>Peso</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @for (data of basicTable.data; track data) {
-                    <tr>
-                      <td>{{ data.posicion }}</td>
-                      <td>{{ data.nombre }} {{ data.apellido }}</td>
-                      <td>{{ data.club }}</td>
-                      <td>{{ data.peso }} Kg</td>
-                    </tr>
-                  }
+                  <tr *ngFor="let data of item.topFour; let i = index;">
+                    <td style="text-align: center;">{{ i + 1 }}</td>
+                    <td>{{ data.nombre }}</td>
+                  </tr>
+                  
                 </tbody>
               </nz-table>
         </div>

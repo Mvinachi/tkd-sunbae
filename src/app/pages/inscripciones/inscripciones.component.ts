@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { debounceTime } from 'rxjs';
 
@@ -30,6 +31,7 @@ export class InscripcionesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modal: NzModalService,
+    private router: Router,
     private http: HttpClient
   ) {
 
@@ -139,11 +141,14 @@ export class InscripcionesComponent implements OnInit {
       this.http.post(this.form.get('modalidad')?.value == 'K' ? 'http://localhost:3300/inscribirdeportistacombate' : 'http://localhost:3300/inscribirdeportistapoomsae', newData)
       .subscribe(
         (response: any) => {
-          this.modal.success({
+          const modal = this.modal.success({
             nzTitle: 'Exitoso',
-            nzContent: response
+            nzContent: response.message
           });
-          // Maneja la respuesta como desees, por ejemplo, actualizando la lista de categorías
+          
+          modal.afterClose.subscribe(result => {
+            this.router.navigate(['./'])
+          })
         },
         error => {
           console.error('Error al enviar los datos', error);
