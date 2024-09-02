@@ -147,7 +147,7 @@ export class InscripcionesComponent implements OnInit {
           });
           
           modal.afterClose.subscribe(result => {
-            this.router.navigate(['./'])
+            // this.router.navigate(['./'])
           })
         },
         error => {

@@ -51,6 +51,8 @@ export class BracketComponent implements OnInit {
     selectKyo: any[] = [];
     selectPoom: any[] = [];
     form: FormGroup
+    user: string = '';
+    estructura:any
   
   constructor(
     private formBuilder: FormBuilder,
@@ -64,6 +66,8 @@ export class BracketComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.user = sessionStorage.getItem('user') ? sessionStorage.getItem('user')! : '';
     this.getCategoriasKyo();
     this.getCategoriasPoom();
 
@@ -141,6 +145,27 @@ getCategoriasKyo() {
       });
   }
 
+  generateBrackets() {
+
+    const modal = this.modal.warning({
+      nzTitle: 'Atencion',
+      nzContent: 'Se volveran a generar nuevamente los brackets de todas las categorias y se borrara la formacion existente.',
+      nzOnOk: () =>
+        new Promise((resolve, reject) => {
+          this.http.post('http://localhost:3300/brackets4all', null)
+        .subscribe(
+          (response: any) => {
+            setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+          },
+          error => {
+            console.error('Error al enviar los datos', error);
+            reject
+          }
+        );
+        }).catch(() => console.log('Oops errors!'))
+    });
+    
+  }
   
 
 }

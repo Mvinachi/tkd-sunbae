@@ -14,7 +14,41 @@
     </div>
   </div>
 <section style="padding: 2rem;">
-    <div nz-row [nzGutter]="[16, 12]">            
+  <div nz-row [nzGutter]="[16, 12]">
+    <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="'Poomsae'"></nz-divider>     
+      <div *ngFor="let item of DataTablasPoom" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+          <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="item.nombre_categoria" nzOrientation="left"></nz-divider>
+          <nz-table nzBordered #basicTable [nzPageSize]="10" [nzData]="item.deportistas" [nzShowPagination]="false">
+              <thead>
+                <tr>
+                  <th nzWidth="100px">Posicion</th>
+                  <th>Nombre</th>
+                  <th>Ronda 1</th>
+                  <th>Ronda 2</th>
+                  <th>Promedio</th>
+                  <th *ngIf="user == 'admin'">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of getArraysOrdenados(item.deportistas); let i = index;">
+                  <td style="text-align: center;">{{ i + 1 }}</td>
+                  <td>{{ data.nombre_completo }}</td>
+                  <td>{{ data.puntaje }}</td>
+                  <td>{{ data.puntaje2 }}</td>
+                  <td>{{ data.promedio_puntajes }}</td>
+                  <td *ngIf="user == 'admin'" style="display: flex; flex-direction: row; gap: 1rem;">
+                    <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
+                      <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 16px;"></span>
+                      <p style="margin: 0;">Editar</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </nz-table>
+      </div>
+  </div>
+    <div nz-row [nzGutter]="[16, 12]">
+      <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="'Kyorugui'"></nz-divider>     
         <div *ngFor="let item of DataTablas" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
             <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="item.nombre_categoria" nzOrientation="left"></nz-divider>
             <nz-table nzBordered #basicTable [nzPageSize]="10" [nzData]="item.topFour" [nzShowPagination]="false">
@@ -29,7 +63,6 @@
                     <td style="text-align: center;">{{ i + 1 }}</td>
                     <td>{{ data.nombre }}</td>
                   </tr>
-                  
                 </tbody>
               </nz-table>
         </div>

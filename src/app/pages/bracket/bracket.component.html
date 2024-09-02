@@ -14,10 +14,17 @@
   <div style="padding: 0 3.125rem;">
     <form [formGroup]="form">
       <div nz-row [nzGutter]="[16, 12]">
+
+        <nz-divider *ngIf="user == 'admin'" style="font-family: Mariott; color: var(--primary);" nzText="Funciones de Administrador"></nz-divider>
+        <div *ngIf="user == 'admin'" nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}" style="align-items: center; display: flex; justify-content: center;">
+          <button (click)="generateBrackets()"
+          style=" cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 8px;">
+          <p style="color: white; font-weight: bold; margin: 0;">Generar brackets</p>
+      </button>
+      </div>
           
           <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Selecciona un bracket" nzOrientation="left"></nz-divider>
-
-          <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+          <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
               <div style="display: flex; flex-direction: column; width: 100%;">
                   <label [ngClass]="{'error': form.get('codigoc')!.invalid && form.get('codigoc')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Categorias Kyorugui</label>
                     <nz-select [nzStatus]="form.get('codigoc')!.invalid && form.get('codigoc')!.dirty ? 'error' : ''" formControlName="codigoc" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
@@ -25,15 +32,6 @@
                     </nz-select>
               </div>
           </div>
-
-          <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
-            <div style="display: flex; flex-direction: column; width: 100%;">
-                <label [ngClass]="{'error': form.get('codigop')!.invalid && form.get('codigop')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Categorias Poomsae</label>
-                  <nz-select [nzStatus]="form.get('codigop')!.invalid && form.get('codigop')!.dirty ? 'error' : ''" formControlName="codigop" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
-                    <nz-option *ngFor="let categoria of selectPoom" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriap"></nz-option>
-                  </nz-select>
-            </div>
-        </div>
           
       </div>
   </form>
