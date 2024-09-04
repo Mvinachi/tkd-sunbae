@@ -101,8 +101,6 @@ getStructure(id: any) {
       .subscribe((data: any) => {
         this.estructura = data.data.match
         this.participants = data.data.participant
-
-        this.assignPositionsToParticipants()
       })
 }
 
@@ -221,32 +219,32 @@ getCategoriasKyo() {
     })
   }
   
-  assignPositionsToParticipants() {
-    // Clonar el array de participantes
-    const clonedParticipants = this.participants.map((participant: any) => ({ ...participant }));
+  // assignPositionsToParticipants() {
+  //   // Clonar el array de participantes
+  //   const clonedParticipants = this.participants.map((participant: any) => ({ ...participant }));
   
-    // Crear un mapa para almacenar la posición de cada participante según su ID
-    const positionMap = new Map<number, number>();
+  //   // Crear un mapa para almacenar la posición de cada participante según su ID
+  //   const positionMap = new Map<number, number>();
   
-    // Recorrer los partidos para llenar el mapa con las posiciones
-    this.estructura.forEach((match: any) => {
-      if (match.opponent1 && match.opponent1.id !== null && match.opponent1.position !== undefined) {
-        positionMap.set(match.opponent1.id, match.opponent1.position);
-      }
-      if (match.opponent2 && match.opponent2.id !== null && match.opponent2.position !== undefined) {
-        positionMap.set(match.opponent2.id, match.opponent2.position);
-      }
-    });
+  //   // Recorrer los partidos para llenar el mapa con las posiciones
+  //   this.estructura.forEach((match: any) => {
+  //     if (match.opponent1 && match.opponent1.id !== null && match.opponent1.position !== undefined) {
+  //       positionMap.set(match.opponent1.id, match.opponent1.position);
+  //     }
+  //     if (match.opponent2 && match.opponent2.id !== null && match.opponent2.position !== undefined) {
+  //       positionMap.set(match.opponent2.id, match.opponent2.position);
+  //     }
+  //   });
   
-    // Asignar las posiciones a los participantes clonados
-    clonedParticipants.forEach((participant: any) => {
-      const position = positionMap.get(participant.id);
-      participant.position = position !== undefined ? position : null;
-    });
+  //   // Asignar las posiciones a los participantes clonados
+  //   clonedParticipants.forEach((participant: any) => {
+  //     const position = positionMap.get(participant.id);
+  //     participant.position = position !== undefined ? position : null;
+  //   });
   
-    console.log(clonedParticipants);
-    this.participants = clonedParticipants;
-  }
+  //   console.log(clonedParticipants);
+  //   this.participants = clonedParticipants;
+  // }
 
   findFigther(id: any) {
     return this.participants.find((item: any) => item.id == id);

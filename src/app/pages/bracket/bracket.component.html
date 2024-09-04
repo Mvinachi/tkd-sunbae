@@ -47,15 +47,15 @@
 
     <div class="grid-container" *ngIf="estructura && user == 'admin'">
       <div *ngFor="let item of estructura"
-           class="card" (click)="addPuntaje(item.opponent1.id ? findFigther(item.opponent1.id).position : null, item.opponent2.id ? findFigther(item.opponent2.id).position : null, item.iddelcombate)"
+           class="card" (click)="addPuntaje(item.opponent1.id || item.opponent1.id == 0 ? findFigther(item.opponent1.id).deportista_id : null, item.opponent2.id || item.opponent2.id == 0 ? findFigther(item.opponent2.id).deportista_id : null, item.iddelcombate)"
            [ngStyle]="{'grid-column': item.round_id + 1, 'grid-row': item.number}"
            [ngClass]="{'readyMatch': item.opponent1.score || item.opponent2.score}">
            <strong>Round {{item.round_id + 1}}</strong>
            <p>N° Combate <strong>{{ item.iddelcombate }}</strong></p>
            <div style="display: flex; flex-direction: column;">
-            <p *ngIf="item.opponent1.id || item.opponent1.id == 0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent1.id).position}}</strong> - <strong>{{findFigther(item.opponent1.id).name}}</strong></p>
+            <p *ngIf="item.opponent1.id || item.opponent1.id == 0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent1.id).deportista_id}}</strong> - <strong>{{findFigther(item.opponent1.id).name}}</strong></p>
             <p *ngIf="item.opponent1.id == null" style="margin: 0;">Luchador no asignado</p>
-            <p *ngIf="item.opponent2.id || item.opponent2.id ==0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent2.id).position}}</strong> - <strong>{{findFigther(item.opponent2.id).name}}</strong></p>
+            <p *ngIf="item.opponent2.id || item.opponent2.id ==0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent2.id).deportista_id}}</strong> - <strong>{{findFigther(item.opponent2.id).name}}</strong></p>
             <p *ngIf="item.opponent2.id == null" style="margin: 0;">Luchador no asignado</p>
            </div>
       </div>

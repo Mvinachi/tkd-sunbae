@@ -4,14 +4,14 @@
         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
             <div style="display: flex; flex-direction: column; width: 100%;">
                 <label for="" [ngClass]="{'error': form.get('puntaje1')!.invalid && form.get('puntaje1')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Puntaje Luchador N° {{nzModalData.id1}}</label>
-                <input OnlyNumbers [nzStatus]="form.get('puntaje1')!.invalid && form.get('puntaje1')!.dirty ? 'error' : ''" formControlName="puntaje1" nz-input nzSize="large" style=" color: var(--primary);" />
+                <input OnlyNumbers [nzStatus]="form.get('puntaje1')!.invalid && form.get('puntaje1')!.dirty ? 'error' : ''" formControlName="puntaje1" nz-input nzSize="large" style=" color: var(--primary);"/>
             </div>
         </div>
 
         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
             <div style="display: flex; flex-direction: column; width: 100%;">
                 <label for="" [ngClass]="{'error': form.get('puntaje2')!.invalid && form.get('puntaje2')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Puntaje Luchador N° {{nzModalData.id2}}</label>
-                <input OnlyNumbers [nzStatus]="form.get('puntaje2')!.invalid && form.get('puntaje2')!.dirty ? 'error' : ''" formControlName="puntaje2" nz-input nzSize="large" style=" color: var(--primary);" />
+                <input OnlyNumbers [nzStatus]="form.get('puntaje2')!.invalid && form.get('puntaje2')!.dirty ? 'error' : ''" formControlName="puntaje2" nz-input nzSize="large" style=" color: var(--primary);"/>
             </div>
         </div>
 

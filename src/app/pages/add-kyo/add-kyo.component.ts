@@ -22,10 +22,24 @@ export class AddKyoComponent implements OnInit {
       puntaje1: [null],
       puntaje2: [null],
     });
+
+    if (this.nzModalData.id1 || this.nzModalData.id1 == 0) {
+      this.form.get('puntaje1')?.enable()
+    } else {
+      this.form.get('puntaje1')?.disable()
+    }
+
+    if (this.nzModalData.id2 || this.nzModalData.id2 == 0) {
+      this.form.get('puntaje2')?.enable()
+    } else {
+      this.form.get('puntaje2')?.disable()
+    }
+    
   }
 
   ngOnInit(): void {
-
+    console.log(this.nzModalData);
+    
   }
 
   sendForm() {
