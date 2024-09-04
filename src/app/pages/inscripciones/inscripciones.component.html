@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
+                <div *ngIf="form.get('alimentacion')!.value != 'No'" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
                         <label [ngClass]="{'error': form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Numero de contacto para brindarle asistencia</label>
                         <input OnlyNumbers [nzStatus]="form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty ? 'error' : ''" formControlName="numeroAsistencia" nz-input nzSize="large" style=" color: var(--primary);" />

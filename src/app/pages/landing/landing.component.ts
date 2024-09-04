@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +11,7 @@ import { interval, Subscription } from 'rxjs';
 export class LandingComponent implements OnInit, OnDestroy {
   targetDate: Date = new Date('2024-09-06T00:00:00'); // Establece aquí tu fecha objetivo
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private modal: NzModalService) {
     
   }
 
@@ -34,6 +35,13 @@ export class LandingComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  modalContactos() {
+    this.modal.info({
+      nzTitle: 'Lineas de Atencion',
+      nzContent: `<a href='https://wa.me/573005161540'><span nz-icon nzType="whats-app" nzTheme="outline"></span> +57 3005161540</a> | <a href='https://wa.me/573014267490'><span nz-icon nzType="whats-app" nzTheme="outline"></span> +57 3014267490</a>`,
+    });
   }
 
   navigate(){

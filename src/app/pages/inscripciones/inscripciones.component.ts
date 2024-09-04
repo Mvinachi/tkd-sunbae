@@ -42,7 +42,7 @@ export class InscripcionesComponent implements OnInit {
       club: [null, [Validators.required]],
       entrenador: [null, [Validators.required]],
       alimentacion: [null, [Validators.required]],
-      numeroAsistencia: [null, [Validators.required]],
+      numeroAsistencia: [null],
       //------------------
       nombre: [null, [Validators.required]],
       apellido: [null, [Validators.required]],
@@ -170,7 +170,7 @@ export class InscripcionesComponent implements OnInit {
           });
           
           modal.afterClose.subscribe(result => {
-             this.router.navigate(['./'])
+            //  this.router.navigate(['./'])
           })
         },
         error => {

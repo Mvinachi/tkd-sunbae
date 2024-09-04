@@ -1,28 +1,28 @@
 <footer class="footer">
     <div class="listFooter">
         <div style="display: flex; flex-direction: column; text-align: left; gap: 1rem;">
-            <strong style="font-size: 1.4rem; margin: 0;">Cuenta</strong>
-            <p style="margin: 0;">Inicia Sesion</p>
-            <p style="margin: 0;">Registrate</p>
+            <strong style="font-size: 1.4rem; margin: 0; cursor: pointer;">Cuenta</strong>
+            <p [routerLink]="['/login']" style="margin: 0; cursor: pointer;">Inicia Sesion</p>
+            <p [routerLink]="['/login']" style="margin: 0; cursor: pointer;">Registrate</p>
         </div>
         <div style="display: flex; flex-direction: column; text-align: left; gap: 1rem;">
             <strong style="font-size: 1.4rem;">Partidos</strong>
-            <p style="margin: 0;">Inscripciones</p>
-            <p style="margin: 0;">Tabla de Posiciones</p>
-            <p style="margin: 0;">Brackets</p>
+            <p [routerLink]="['/inscripciones']" style="margin: 0; cursor: pointer;">Inscripciones</p>
+            <p [routerLink]="['/leaderboard']" style="margin: 0; cursor: pointer;">Tabla de Posiciones</p>
+            <p [routerLink]="['/brackets']" style="margin: 0; cursor: pointer;">Brackets</p>
         </div>
         <div style="display: flex; flex-direction: column; text-align: left; gap: 1rem;">
             <strong style="font-size: 1.4rem;">Contactanos</strong>
-            <p style="margin: 0;"><span nz-icon nzType="whats-app" nzTheme="outline"></span> +57 3005161540</p>
-            <p style="margin: 0;"><span nz-icon nzType="environment" nzTheme="outline"></span> Barranquilla Coliseo Sugar Baby Rojas</p>
-            <p style="margin: 0;"><span nz-icon nzType="environment" nzTheme="outline"></span> Soledad Cra 21A # 81A- 75 B - Los Almendros</p>
+            <p (click)="navigateWhasa()" style="margin: 0; cursor: pointer;"><span nz-icon nzType="whats-app" nzTheme="outline"></span> +57 3005161540</p>
+            <p (click)="navigateWhasa2()" style="margin: 0; cursor: pointer;"><span nz-icon nzType="whats-app" nzTheme="outline"></span> +57 3014267490</p>
+            <p (click)="navigateMap()" style="margin: 0; cursor: pointer;"><span nz-icon nzType="environment" nzTheme="outline"></span> Barranquilla Coliseo Sugar Baby Rojas</p>
+            <p (click)="navigateMaps()" style="margin: 0; cursor: pointer;"><span nz-icon nzType="environment" nzTheme="outline"></span> Soledad Cra 21A # 81A- 75 B - Los Almendros</p>
         </div>
         <div style="display: flex; flex-direction: column; text-align: left; gap: 1rem;">
             <strong style="font-size: 1.4rem;">Siguenos</strong>
             <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
-                <span nz-icon nzType="facebook" nzTheme="outline"></span>
-                <span nz-icon nzType="instagram" nzTheme="outline"></span>
-                <span nz-icon nzType="twitter" nzTheme="outline"></span>
+                <span style="cursor: pointer" (click)="navigateFB()" nz-icon nzType="facebook" nzTheme="outline"></span>
+                <span style="cursor: pointer" (click)="navigateInsta()" nz-icon nzType="instagram" nzTheme="outline"></span>
             </div>
         </div>
     </div>

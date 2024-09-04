@@ -64,6 +64,7 @@
     background-color: transparent;
     border: none;
     color: var(--primary);
+    padding: 0 0.75rem;
   }
 
   .listButtons {
@@ -76,8 +77,12 @@
   
   @media (max-width: 955px) {
 
-    .listButtons, .title {
+    .listButtons{
         display: none;
+      }
+
+      .title {
+        font-size: 3vw;
       }
 
       .toggle-btn {

@@ -1,11 +1,11 @@
-<section class="hero">
+<section style="position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;">
     <img src="../../../assets/img/main_bg2.jpg" alt="Imagen de Fondo Principal"
         style="width: 100%; height: calc(100vh - 3.75rem); object-fit: cover; transform: scaleX(-1); filter: brightness(0.5);">
 
-    <div class="textHero">
+    <div style="position: absolute; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <h1 class="title">III
-            Copa Sunbae <br> Taekwondo</h1>
-        <p style="color: white; line-height: 1.5rem;">Participa en la III Copa Sunbae Taekwondo (Kyorugui y Poomsae) del 6 al 8 de septiembre
+            Copa Sunbae Taekwondo</h1>
+        <p style="color: white; line-height: 1.5rem; width: 50vw; text-align: center; font-size: 0.75rem;">Participa en la III Copa Sunbae Taekwondo (Kyorugui y Poomsae) del 6 al 8 de septiembre
             en el Palacio de Combates 'Sugar Baby Rojas'. Competencia para categorías Infantil, Cadete, Junior,
             y Senior.</p>
 
@@ -32,35 +32,13 @@
                 style="cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 0.25rem;">
                 <p style="color: white; font-weight: bold; margin: 0;">INSCRIBIRSE</p>
             </button>
-            <p style="color: white; font-weight: bold;">Mas información</p>
+            <p (click)="modalContactos()" style="color: white; font-weight: bold; cursor: pointer;">Mas información</p>
         </div>
     </div>
-
-    <div class="textHeroResponsive">
-      <h1 class="title">III
-        Copa Sunbae <br> Taekwondo</h1>
-    <p style="color: white; line-height: 1.5rem;">Participa en la III Copa Sunbae Taekwondo (Kyorugui y Poomsae) del 6 al 8 de septiembre
-        en el Palacio de Combates 'Sugar Baby Rojas'. Competencia para categorías Infantil, Cadete, Junior,
-        y Senior.</p>
-    </div>
-
-</section>
-
-<section class="heroResponsive">
-  <img src="../../../assets/img/main_bg2.jpg" alt="Imagen de Fondo Principal"
-      style="width: 100%; height: calc(100vh - 3.75rem); object-fit: cover; transform: scaleX(-1); filter: brightness(0.5);">
-
-  <div class="textHero">
-    <h1 class="title">III
-      Copa Sunbae <br> Taekwondo</h1>
-  <p style="color: white; line-height: 1.5rem;">Participa en la III Copa Sunbae Taekwondo (Kyorugui y Poomsae) del 6 al 8 de septiembre
-      en el Palacio de Combates 'Sugar Baby Rojas'. Competencia para categorías Infantil, Cadete, Junior,
-      y Senior.</p>
-  </div>
 </section>
 
 <div style=" margin: 8rem 3rem;">
-  <div nz-row [nzGutter]="[16, 12]">
+  <div nz-row [nzGutter]="[16, 50]">
         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
           <p style="margin-bottom: 2rem; font-size: 0.875rem; color: white; padding: 0.5rem; border-radius: 10px; background-color: var(--secondary); width: fit-content;">Sobre nosotros</p>
           <h1 style="color: #767c8c; width: fit-content; margin-bottom: 1rem;">Quienes somos <strong style="font-family: Mariott; margin-left: 6px; color: var(--primary);">nosotros</strong></h1>
@@ -68,9 +46,9 @@
           <p>Contamos con sedes en Barranquilla, en el prestigioso Coliseo "Sugar Baby Rojas", y en Soledad, en la Cra 21A # 81A-75 B, Los Almendros, donde nuestros alumnos reciben la mejor preparación tanto en Kyorugui (combate) como en Poomsae (formas).</p>
         </div>
   
-        <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}" style="align-items: center; justify-content: center; display: flex; position: relative;">
-          <div style=" background: linear-gradient(to right, var(--secondary), var(--primary)); border-radius: 10%; width: 400px; height: 400px;"></div>
-          <img src="../../../assets/img/img1.webp" alt="" style="position: absolute; width: 18.75rem; height: 18.75rem; border-radius: 0.25rem; object-fit: cover; right: 3.125rem;">
+        <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}" class="img-container">
+          <div style="transform: rotate(45deg); background: linear-gradient(to right, var(--secondary), var(--primary)); border-radius: 10%; width: 18.75rem; height: 18.75rem;"></div>
+          <img src="../../../assets/img/img1.webp" alt="" style="position: absolute; width: 18.75rem; height: 18.75rem; border-radius: 4.25rem; object-fit: cover;">
         </div>
   </div>
 </div>

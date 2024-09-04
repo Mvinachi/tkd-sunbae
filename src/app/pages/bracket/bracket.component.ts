@@ -187,6 +187,7 @@ getCategoriasKyo() {
       .subscribe(
         (response: any) => {
           setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+          window.location.reload()
         },
         error => {
           console.error('Error al enviar los datos', error);
