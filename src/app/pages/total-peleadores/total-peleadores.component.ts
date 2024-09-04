@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { EditPeleadorComponent } from '../edit-peleador/edit-peleador.component';
 
 @Component({
   selector: 'app-total-peleadores',
@@ -51,13 +52,13 @@ export class TotalPeleadoresComponent implements OnInit {
   searchData(): void {
     let searchValue = this.form.get('buscar')?.value
     let fields: any[] = [
-      'name',
-      'age',
+      'nombre',
+      'apellido',
       'club',
-      'genero',
-      'categoria',
+      'sexo',
       'peso',
-      'modalidad'
+      'modalidad',
+      'activo'
     ]
 
     if (searchValue) {
@@ -108,6 +109,21 @@ deleteForm(id: number) {
     }
   
     return age;
+  }
+
+  editPeleador(peleador: any) {
+    const modal = this.modal.info({
+      nzTitle: 'Editar peleador',
+      nzContent: EditPeleadorComponent,
+      nzWidth: '40.6rem',
+      nzData: {
+        peleador: peleador,
+      }
+    })
+
+    modal.afterClose.subscribe(result => {
+      this.getPeleadores();
+    })
   }
 
   

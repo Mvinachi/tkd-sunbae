@@ -11,7 +11,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   targetDate: Date = new Date('2024-09-06T00:00:00'); // Establece aquí tu fecha objetivo
 
   constructor(private router: Router) {
-
+    
   }
 
   // Inicializar timeRemaining con valores predeterminados
@@ -26,6 +26,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   private subscription: Subscription | null = null;
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.subscription = interval(1000).subscribe(() => this.updateCountdown());
   }
 

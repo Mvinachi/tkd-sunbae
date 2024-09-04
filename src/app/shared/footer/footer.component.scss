@@ -1,0 +1,17 @@
+.footer {
+    padding: 4.375rem 0; background-color: var(--secondary); color: white; text-align: center;
+}
+
+.listFooter {
+    display: flex; justify-content: center; height: 200px; gap: 5rem;
+}
+
+@media (max-width: 955px) {
+    .footer {
+        padding: .5rem;
+    }
+
+    .listFooter {
+        display: none;
+    }
+}

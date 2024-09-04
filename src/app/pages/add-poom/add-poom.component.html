@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+    <div nz-row [nzGutter]="[16, 12]">
+        
+        <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
+            <div style="display: flex; flex-direction: column; width: 100%;">
+                <label for="" [ngClass]="{'error': form.get('puntaje1')!.invalid && form.get('puntaje1')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Puntaje 1er Round</label>
+                <input appOnlyFloats [nzStatus]="form.get('puntaje1')!.invalid && form.get('puntaje1')!.dirty ? 'error' : ''" formControlName="puntaje1" nz-input nzSize="large" style=" color: var(--primary);" />
+            </div>
+        </div>
+
+        <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
+            <div style="display: flex; flex-direction: column; width: 100%;">
+                <label for="" [ngClass]="{'error': form.get('puntaje2')!.invalid && form.get('puntaje2')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Puntaje 2do Round</label>
+                <input appOnlyFloats [nzStatus]="form.get('puntaje2')!.invalid && form.get('puntaje2')!.dirty ? 'error' : ''" formControlName="puntaje2" nz-input nzSize="large" style=" color: var(--primary);" />
+            </div>
+        </div>
+
+        <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}"
+            style="justify-content: center; display: flex;">
+            <button (click)="sendForm()"
+                style="cursor: pointer; padding: .5rem 1rem; background-color: var(--primary); border: none; border-radius: .5rem;">
+                <p style="font-size: 0.75rem; color: white; font-weight: bold; margin: 0;">Editar</p>
+            </button>
+        </div>
+
+    </div>
+</form>

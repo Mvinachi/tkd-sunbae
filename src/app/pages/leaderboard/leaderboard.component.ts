@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { AddPoomComponent } from '../add-poom/add-poom.component';
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,16 +12,18 @@ export class LeaderboardComponent implements OnInit {
 
   DataTablas: any[] = [];
   DataTablasPoom: any[] = [];
-  user:string = ''
+  superU:any = ''
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private modal: NzModalService
   ) {}
 
   ngOnInit(): void {
-    this.user = sessionStorage.getItem('user') ? sessionStorage.getItem('user')! : '';
     this.getListado();
     this.getListadoPoom();
+
+    this.superU = sessionStorage.getItem('pass') ? sessionStorage.getItem('pass') : '';
   }
 
   getListadoPoom() {
@@ -59,6 +63,22 @@ export class LeaderboardComponent implements OnInit {
     return deportistasOrdenados;
   }
 
+  addPuntaje(puntaje1: any, puntaje2: any, id: any, cateoriap: any) {
+    const modal = this.modal.info({
+      nzTitle: 'Agregar Puntaje',
+      nzContent: AddPoomComponent,
+      nzData: {
+        puntaje1: puntaje1,
+        puntaje2: puntaje2,
+        categoriap: cateoriap,
+        id: id
+      }
+    })
+
+    modal.afterClose.subscribe(result => {
+      this.getListadoPoom();
+    })
+  }
 
   back() {
     window.history.back()

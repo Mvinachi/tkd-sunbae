@@ -34,7 +34,9 @@ export class LoginComponent {
       });
       
       modal.afterClose.subscribe(result => {
-        this.router.navigate(['./'])
+        this.router.navigate(['./']).then(() => {
+          window.location.reload();
+        })
       })
     } else {
       this.modal.error({

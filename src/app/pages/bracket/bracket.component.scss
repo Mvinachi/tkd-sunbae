@@ -1,3 +1,25 @@
 .view {
   opacity: 1 !important;
 }
+
+.grid-container {
+  display: grid;
+  grid-auto-rows: max-content; /* Altura de cada fila */
+  grid-auto-columns: max-content; /* Ancho de cada columna */
+  gap: 10px; /* Espacio entre las tarjetas */
+  font-family: Montserrat;
+}
+
+.card {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.readyMatch {
+  background-color: var(--primary);
+  color: #f0f0f0;
+}

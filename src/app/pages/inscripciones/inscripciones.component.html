@@ -5,16 +5,17 @@
             style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
 
         <div style="position: absolute;">
-            <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+            <h1 class="title">
                 Inscripciones</h1>
                 <p style="color: white;">Completa el formulario de inscripción para participar en la III Copa Sunbae Taekwondo</p>
         </div>
     </div>
+    
     <div style="padding: 4.5rem;">
         <form [formGroup]="form">
             <div nz-row [nzGutter]="[16, 12]">
                 
-                <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Formulario de Representacion" nzOrientation="left"></nz-divider>
+                <nz-divider style="font-family: Mariott; color: var(--primary); white-space: break-spaces;" nzText="Formulario de Representacion" nzOrientation="left"></nz-divider>
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
                         <label for="" [ngClass]="{'error': form.get('departamento')!.invalid && form.get('departamento')!.dirty}" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Departamento al que representa</label>
@@ -59,11 +60,11 @@
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
                         <label [ngClass]="{'error': form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Numero de contacto para brindarle asistencia</label>
-                        <input [nzStatus]="form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty ? 'error' : ''" formControlName="numeroAsistencia" nz-input nzSize="large" style=" color: var(--primary);" />
+                        <input OnlyNumbers [nzStatus]="form.get('numeroAsistencia')!.invalid && form.get('numeroAsistencia')!.dirty ? 'error' : ''" formControlName="numeroAsistencia" nz-input nzSize="large" style=" color: var(--primary);" />
                     </div>
                 </div>
 
-                <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de Participante" nzOrientation="left"></nz-divider>
+                <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem; white-space: break-spaces;" nzText="Formulario de Participante" nzOrientation="left"></nz-divider>
                 
                 <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
                     <div style="display: flex; flex-direction: column; width: 100%;">
@@ -134,7 +135,7 @@
 
                 <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}" *ngIf="form.get('modalidad')?.value == 'K' || form.get('modalidad')?.value == 'KP'">
                     <div nz-row [nzGutter]="[16, 12]">
-                        <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de Kyorugui" nzOrientation="left"></nz-divider>
+                        <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem; white-space: break-spaces;" nzText="Formulario de Kyorugui" nzOrientation="left"></nz-divider>
 
                         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column;" formArrayName="kyoLista">
@@ -157,7 +158,7 @@
 
                 <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}" *ngIf="form.get('modalidad')?.value == 'P' || form.get('modalidad')?.value == 'KP'">
                     <div nz-row [nzGutter]="[16, 12]">
-                        <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem;" nzText="Formulario de poomsae" nzOrientation="left"></nz-divider>
+                        <nz-divider style="font-family: Mariott; color: var(--primary); margin-top: 2rem; white-space: break-spaces;" nzText="Formulario de poomsae" nzOrientation="left"></nz-divider>
 
                         <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
                             <div style="display: flex; flex-direction: column;" formArrayName="poomLista">

@@ -1,13 +1,14 @@
 <section>
-  <div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div
+    style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
 
     <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
-        style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
+      style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
 
     <div (click)="display()" style="position: absolute;">
-        <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
-            Torneo</h1>
-            <p style="color: white;">Observa la tabla de posiciones de los competidores en la III Copa Sunbae Taekwondo</p>
+      <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+        Torneo</h1>
+      <p style="color: white;">Observa la tabla de posiciones de los competidores en la III Copa Sunbae Taekwondo</p>
     </div>
   </div>
 
@@ -15,27 +16,52 @@
     <form [formGroup]="form">
       <div nz-row [nzGutter]="[16, 12]">
 
-        <nz-divider *ngIf="user == 'admin'" style="font-family: Mariott; color: var(--primary);" nzText="Funciones de Administrador"></nz-divider>
-        <div *ngIf="user == 'admin'" nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}" style="align-items: center; display: flex; justify-content: center;">
+        <nz-divider *ngIf="user == 'admin'" style="font-family: Mariott; color: var(--primary);"
+          nzText="Funciones de Administrador"></nz-divider>
+        <div *ngIf="user == 'admin'" nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}"
+          style="align-items: center; display: flex; justify-content: center;">
           <button (click)="generateBrackets()"
-          style=" cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 8px;">
-          <p style="color: white; font-weight: bold; margin: 0;">Generar brackets</p>
-      </button>
-      </div>
-          
-          <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Selecciona un bracket" nzOrientation="left"></nz-divider>
-          <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
-              <div style="display: flex; flex-direction: column; width: 100%;">
-                  <label [ngClass]="{'error': form.get('codigoc')!.invalid && form.get('codigoc')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Categorias Kyorugui</label>
-                    <nz-select [nzStatus]="form.get('codigoc')!.invalid && form.get('codigoc')!.dirty ? 'error' : ''" formControlName="codigoc" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
-                      <nz-option *ngFor="let categoria of selectKyo" [nzLabel]="categoria.nombre" [nzValue]="categoria.id_categoriac"></nz-option>
-                    </nz-select>
-              </div>
+            style=" cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 8px;">
+            <p style="color: white; font-weight: bold; margin: 0;">Generar brackets</p>
+          </button>
+        </div>
+
+        <nz-divider style="font-family: Mariott; color: var(--primary);" nzText="Selecciona un bracket"
+          nzOrientation="left"></nz-divider>
+        <div nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
+          <div style="display: flex; flex-direction: column; width: 100%;">
+            <label [ngClass]="{'error': form.get('codigoc')!.invalid && form.get('codigoc')!.dirty}" for=""
+              style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Categorias Kyorugui</label>
+            <nz-select [nzStatus]="form.get('codigoc')!.invalid && form.get('codigoc')!.dirty ? 'error' : ''"
+              formControlName="codigoc" nzShowSearch nzAllowClear [nzSize]="'large'" style="color: var(--primary);">
+              <nz-option *ngFor="let categoria of selectKyo" [nzLabel]="categoria.nombre"
+                [nzValue]="categoria.id_categoriac"></nz-option>
+            </nz-select>
           </div>
-          
+        </div>
+
       </div>
-  </form>
+    </form>
     <nz-divider style="font-family: Mariott; color: var(--primary);" nzOrientation="left"></nz-divider>
+
+
+    <div class="grid-container" *ngIf="estructura && user == 'admin'">
+      <div *ngFor="let item of estructura"
+           class="card" (click)="addPuntaje(item.opponent1.id ? findFigther(item.opponent1.id).position : null, item.opponent2.id ? findFigther(item.opponent2.id).position : null, item.iddelcombate)"
+           [ngStyle]="{'grid-column': item.round_id + 1, 'grid-row': item.number}"
+           [ngClass]="{'readyMatch': item.opponent1.score || item.opponent2.score}">
+           <strong>Round {{item.round_id + 1}}</strong>
+           <p>N° Combate <strong>{{ item.iddelcombate }}</strong></p>
+           <div style="display: flex; flex-direction: column;">
+            <p *ngIf="item.opponent1.id || item.opponent1.id == 0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent1.id).position}}</strong> - <strong>{{findFigther(item.opponent1.id).name}}</strong></p>
+            <p *ngIf="item.opponent1.id == null" style="margin: 0;">Luchador no asignado</p>
+            <p *ngIf="item.opponent2.id || item.opponent2.id ==0" style="margin: 0;">Luchador N° <strong>{{findFigther(item.opponent2.id).position}}</strong> - <strong>{{findFigther(item.opponent2.id).name}}</strong></p>
+            <p *ngIf="item.opponent2.id == null" style="margin: 0;">Luchador no asignado</p>
+           </div>
+      </div>
+    </div>
+    <nz-divider *ngIf="estructura && user == 'admin'" style="font-family: Mariott; color: var(--primary);" nzOrientation="left"></nz-divider>
+
   </div>
 
   <div>

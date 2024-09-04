@@ -1,11 +1,10 @@
 <section>
     <div style="width: 100%; height: 23.375rem; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;">
-    
         <img src="../../../assets/img/main_bg.jpg" alt="Imagen de Fondo Principal"
             style="width: 100%; height: 23.375rem; object-fit: cover; filter: brightness(0.5);">
     
         <div style="position: absolute;">
-            <h1 style="font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;">
+            <h1 class="title">
                 Peleadores</h1>
                 <p style="color: white;">Observa la lista completa de competidores en la III Copa Sunbae Taekwondo</p>
         </div>
@@ -18,63 +17,50 @@
         <span nz-icon nzType="search"></span>
       </ng-template>
     </form>
-    <nz-table nzBordered #basicTable [nzPageSize]="20" [nzData]="filteredData">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Edad</th>
-          <th>Club o Delegacion</th>
-          <th>Genero</th>
-          <th>Peso</th>
-          <th>Categorias</th>
-          <th>Modalidad</th>
-          <th *ngIf="user == 'admin'">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (data of basicTable.data; track data) {
-          <tr>
-            <td>{{ data.nombre }} {{ data.apellido }}</td>
-            <td>{{ calculateAge(data.nacimiento) }}</td>
-            <td>{{ data.club }}</td>
-            <td>{{ data.sexo == 'F' ? 'Femenino' : 'Masculino' }}</td>
-            <td>{{ data.peso }}</td>
-            <td>
-              <p *ngFor="let item of data.categorias" style="margin: 0;">{{ item }}</p>
-            </td>
-            <td>{{ data.modalidad == 'poomsae' ? 'Poomsae' : 'Kyorugui'}}</td>
-            <td *ngIf="user == 'admin'" style="display: flex; flex-direction: row; gap: 1rem;">
-              <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
-                <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 16px;"></span>
-                <p style="margin: 0;">Editar</p>
-              </div>
-              <div (click)="deleteForm(data.id_deportista)" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #FF4D4F">
-                <span nz-icon nzType="delete" nzTheme="outline" style="font-size: 16px;"></span>
-                <p style="margin: 0;">Eliminar</p>
-              </div>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </nz-table>
-      <!-- nz-table nzBordered #headerTable [nzData]="listOfData" [nzPageSize]="50" [nzScroll]="{ y: '240px' }">
+    <div class="scrollX">
+      <nz-table nzBordered #basicTable [nzPageSize]="20" [nzData]="filteredData">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th nzWidth="100px">Age</th>
-            <th>Address</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Club o Delegacion</th>
+            <th>Genero</th>
+            <th>Peso</th>
+            <th>Categorias</th>
+            <th>Modalidad</th>
+            <th *ngIf="user == 'admin'">Estado</th>
+            <th *ngIf="user == 'admin'">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          @for (data of headerTable.data; track data) {
+          @for (data of basicTable.data; track data) {
             <tr>
-              <td>{{ data.name }}</td>
-              <td>{{ data.age }}</td>
-              <td>{{ data.address }}</td>
+              <td>{{ data.nombre }} {{ data.apellido }}</td>
+              <td>{{ calculateAge(data.nacimiento) }}</td>
+              <td>{{ data.club }}</td>
+              <td>{{ data.sexo == 'F' ? 'Femenino' : 'Masculino' }}</td>
+              <td>{{ data.peso }}</td>
+              <td>
+                <p *ngFor="let item of data.categorias" style="margin: 0;">{{ item }}</p>
+              </td>
+              <td>{{ data.modalidad == 'poomsae' ? 'Poomsae' : 'Kyorugui'}}</td>
+              <td *ngIf="user == 'admin'" [ngClass]="{'active': data.activo == 1, 'desactive': data.activo == 0}" >{{ data.activo == 0 ? 'Inactivo' : 'Activo' }}</td>
+              <td *ngIf="user == 'admin'">
+                <div style="display: flex; flex-direction: row; gap: 1rem;">
+                  <div (click)="editPeleador(data)" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: var(--primary)">
+                    <span nz-icon nzType="edit" nzTheme="outline" style="font-size: 16px;"></span>
+                    <p style="margin: 0;">Editar</p>
+                  </div>
+                  <div (click)="deleteForm(data.id_deportista)" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #FF4D4F">
+                    <span nz-icon nzType="delete" nzTheme="outline" style="font-size: 16px;"></span>
+                    <p style="margin: 0;">Eliminar</p>
+                  </div>
+                </div>
+              </td>
             </tr>
           }
         </tbody>
-      </nz-table -->
+      </nz-table>
+    </div>
 </section>
 

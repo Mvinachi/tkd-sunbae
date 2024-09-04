@@ -1,3 +1,13 @@
 .error {
     color: #FF4D4F !important;
 }
+
+.title {
+    font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;
+}
+
+@media (max-width: 955px) {
+    .title {
+        font-size: 5vw;
+    }
+}

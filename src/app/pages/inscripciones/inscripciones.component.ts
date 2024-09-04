@@ -13,6 +13,7 @@ import { debounceTime } from 'rxjs';
 export class InscripcionesComponent implements OnInit {
 
   form!: FormGroup
+  user: string = '';
 
   demoValue: number = 1
   formatterKg = (value: number): string => `${value} Kg`;
@@ -76,6 +77,28 @@ export class InscripcionesComponent implements OnInit {
       });
   }
 
+  generatePoom() {
+
+    const modal = this.modal.warning({
+      nzTitle: 'Atencion',
+      nzContent: 'Se volveran a generar nuevamente la tabla de clasificaciones poomsae de todas las categorias y se borrara las existentes.',
+      nzOnOk: () =>
+        new Promise((resolve, reject) => {
+          this.http.post('http://localhost:3300/torneo/poomsae', null)
+        .subscribe(
+          (response: any) => {
+            setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+          },
+          error => {
+            console.error('Error al enviar los datos', error);
+            reject
+          }
+        );
+        }).catch(() => console.log('Oops errors!'))
+    });
+    
+  }
+
   formTouched(form: any) {
     form.markAllAsTouched();
     for (const key in form.controls) {
@@ -120,7 +143,7 @@ export class InscripcionesComponent implements OnInit {
   }
 
   sendForm() {
-    if (this.form.valid) {
+    if (this.form.valid && this.form.get('token')?.value == 'administrator') {
 
       let newData = {
         nombre: this.form.get('nombre')?.value,
@@ -147,7 +170,7 @@ export class InscripcionesComponent implements OnInit {
           });
           
           modal.afterClose.subscribe(result => {
-            // this.router.navigate(['./'])
+             this.router.navigate(['./'])
           })
         },
         error => {
@@ -156,10 +179,6 @@ export class InscripcionesComponent implements OnInit {
       );
     } else{
       this.formTouched(this.form)
-
-      console.log(this.form.get('kyoLista')?.value);
-      console.log(this.form.get('poomLista')?.value);
-      
       
       this.modal.error({
         nzTitle: 'Error',

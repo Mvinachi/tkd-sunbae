@@ -4,19 +4,36 @@
         style="cursor: pointer; display: flex; flex-direction: row; align-items: center; gap: 0.75rem;">
         <img src="../../../assets/img/main_icon.jpeg" alt="Logo Club Sunbae"
             style="border-radius: 50%; width: 3.125rem; height: 3.125rem;">
-        <h2 style="font-family: Mariott; color: var(--primary)">Club Sunbae</h2>
+        <h2 class="title">Club Sunbae</h2>
     </div>
 
-    <div style="display: flex; gap: 1rem; align-items: center;">
-        <a [routerLink]="['/']" [ngClass]="{'active': isActive('/')}"
+    <div class="listButtons">
+        <a [routerLink]="['/']" [ngClass]="{'activeItem': isActive('/')}"
             style="cursor: pointer; text-decoration: none; color: var(--primary);">Home</a>
             <nz-divider nzType="vertical"></nz-divider>
-        <a [routerLink]="['/inscripciones']" [ngClass]="{'active': isActive('/inscripciones')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Inscripciones</a>
+        <a [routerLink]="['/inscripciones']" [ngClass]="{'activeItem': isActive('/inscripciones')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Inscripciones</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a [routerLink]="['/menu']" [ngClass]="{'active': isActive('/menu')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Clasificaciones</a>
+        <a [routerLink]="['/menu']" [ngClass]="{'activeItem': isActive('/menu')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Clasificaciones</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a [routerLink]="['/peleadores']" [ngClass]="{'active': isActive('/peleadores')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Peleadores</a>
+        <a [routerLink]="['/peleadores']" [ngClass]="{'activeItem': isActive('/peleadores')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Peleadores</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <span [routerLink]="['/login']" nz-icon nzType="user" nzTheme="outline" style="font-size: 1.5rem; color: var(--primary);"></span>
+        <span *ngIf="user != 'admin'" [routerLink]="['/login']" nz-icon nzType="user" nzTheme="outline" style="font-size: 1.5rem; color: var(--primary);"></span>
+        <span *ngIf="user == 'admin'" (click)="deleteUser()" nz-icon nzType="user-delete" nzTheme="outline" style="font-size: 1.5rem; color: var(--primary);"></span>
     </div>
+
+    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+
 </header>
+
+<div class="sidebar" [class.active]="isSidebarOpen">
+    <ul>
+      <li><a [routerLink]="['/']" [ngClass]="{'activeItem': isActive('/')}"
+        style="cursor: pointer; text-decoration: none; color: var(--primary);">Home</a></li>
+      <li><a [routerLink]="['/inscripciones']" [ngClass]="{'activeItem': isActive('/inscripciones')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Inscripciones</a></li>
+      <li><a [routerLink]="['/menu']" [ngClass]="{'activeItem': isActive('/menu')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Clasificaciones</a></li>
+      <li><a [routerLink]="['/peleadores']" [ngClass]="{'activeItem': isActive('/peleadores')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Peleadores</a></li>
+      <li><a [routerLink]="['/login']" [ngClass]="{'activeItem': isActive('/login')}" style="cursor: pointer; text-decoration: none; color: var(--primary);">Login</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" *ngIf="isSidebarOpen" (click)="closeSidebar()"></div>

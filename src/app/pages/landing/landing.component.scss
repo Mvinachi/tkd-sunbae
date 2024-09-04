@@ -20,3 +20,36 @@
     display: block;
   }
   
+  .title {
+    font-family: Mariott; color: white; font-size: 4rem; line-height: 6rem; margin-bottom: 1.5rem;
+  }
+
+  .textHero {
+    position: absolute; top: 20%; right: 15%; width: 37.5rem;
+  }
+
+  .hero {
+    position: relative; overflow: hidden;
+  }
+
+  .heroResponsive {
+    position: relative; overflow: hidden; display: none;
+  }
+
+  @media (max-width: 955px) {
+    .title {
+        font-size: 5vw;
+    }
+
+    .textHero {
+      display: none;
+    }
+
+    .hero {
+      display: none;
+    }
+
+    .hero {
+      display: block;
+    }
+}

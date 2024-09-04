@@ -31,6 +31,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { BracketComponent } from './pages/bracket/bracket.component';
+import { OnlyNumbersDirective } from './shared/Directives/only-numbers.directive';
+import { AddPoomComponent } from './pages/add-poom/add-poom.component';
+import { AddKyoComponent } from './pages/add-kyo/add-kyo.component';
+import { OnlyFloatsDirective } from './shared/Directives/only-floats.directive';
+import { EditPeleadorComponent } from './pages/edit-peleador/edit-peleador.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 registerLocaleData(es);
 
@@ -56,7 +62,13 @@ declare global {
     TotalPeleadoresComponent,
     LeaderboardComponent,
     MenuComponent,
-    BracketComponent
+    BracketComponent,
+    OnlyNumbersDirective,
+    OnlyFloatsDirective,
+    AddPoomComponent,
+    AddKyoComponent,
+    EditPeleadorComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

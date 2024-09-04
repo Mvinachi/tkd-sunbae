@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { HttpClient } from '@angular/common/http';
 import { debounceTime } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AddKyoComponent } from '../add-kyo/add-kyo.component';
 
 const TOURNAMENT_ID = 0;
 
@@ -52,20 +54,33 @@ export class BracketComponent implements OnInit {
     selectPoom: any[] = [];
     form: FormGroup
     user: string = '';
-    estructura:any
+    estructura:any;
+    participants:any;
+    secondTime:boolean = false
   
   constructor(
     private formBuilder: FormBuilder,
     private modal: NzModalService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
       codigoc: [null],
-      codigop: [null],
     });
   }
 
   ngOnInit() {
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['categoria_id']) {
+        let paramID = params['categoria_id']
+        this.form.get('codigoc')?.setValue(paramID)
+
+        this.getBrackets(paramID)
+        this.getStructure(paramID)
+      }
+    });
 
     this.user = sessionStorage.getItem('user') ? sessionStorage.getItem('user')! : '';
     this.getCategoriasKyo();
@@ -76,18 +91,19 @@ export class BracketComponent implements OnInit {
       .subscribe((res) => {
         if (res != null) {
           this.getBrackets(res)
+          this.getStructure(res)
         }
       });
+}
 
-      this.form.get('codigop')
-      ?.valueChanges.pipe(debounceTime(100))
-      .subscribe((res) => {
-        if (res != null) {
-          this.getBrackets(res)
-        }
-      });
+getStructure(id: any) {
+  this.http.get(`http://localhost:3300/brackets/${id}`)
+      .subscribe((data: any) => {
+        this.estructura = data.data.match
+        this.participants = data.data.participant
 
-    
+        this.assignPositionsToParticipants()
+      })
 }
 
 display() {
@@ -117,7 +133,9 @@ getCategoriasKyo() {
   }
 
   getBrackets(id: any) {
-    this.http.get(`http://localhost:3300/brackets/${id}`)
+
+    if (!this.secondTime) {
+      this.http.get(`http://localhost:3300/brackets/${id}`)
       .subscribe((data: any) => {
 
         if (window.bracketsViewer) {
@@ -133,8 +151,8 @@ getCategoriasKyo() {
                     'consolation-final': 'Semi {{position}}',
                 },
             });
-            
-    
+
+            this.secondTime = true
             process(data.data).then((data) => window.bracketsViewer.render(data));
         } else {
             console.error('bracketsViewer is not defined');
@@ -143,6 +161,17 @@ getCategoriasKyo() {
       }, error => {
         console.error('Error al obtener los datos', error);
       });
+    } else {
+
+      this.router.navigate(['/brackets'], {
+        queryParams: {
+          categoria_id: id,
+        }
+      }).then(() => {
+        window.location.reload();
+      });
+
+    }
   }
 
   generateBrackets() {
@@ -150,22 +179,75 @@ getCategoriasKyo() {
     const modal = this.modal.warning({
       nzTitle: 'Atencion',
       nzContent: 'Se volveran a generar nuevamente los brackets de todas las categorias y se borrara la formacion existente.',
-      nzOnOk: () =>
-        new Promise((resolve, reject) => {
-          this.http.post('http://localhost:3300/brackets4all', null)
-        .subscribe(
-          (response: any) => {
-            setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-          },
-          error => {
-            console.error('Error al enviar los datos', error);
-            reject
-          }
-        );
-        }).catch(() => console.log('Oops errors!'))
     });
+
+    modal.afterClose.subscribe((result)=>{
+      new Promise((resolve, reject) => {
+        this.http.post('http://localhost:3300/brackets4all', null)
+      .subscribe(
+        (response: any) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        },
+        error => {
+          console.error('Error al enviar los datos', error);
+          reject
+        }
+      );
+      }).catch(() => console.log('Oops errors!'))
+  })
     
   }
-  
 
+  addPuntaje(peleador1: any, peleador2: any, combate: any) {
+    const modal = this.modal.info({
+      nzTitle: `Agregar Puntaje - Combate N° ${combate}`,
+      nzContent: AddKyoComponent,
+      nzData: {
+        id1: peleador1,
+        id2: peleador2,
+        idCombate: combate
+      }
+    })
+
+    modal.afterClose.subscribe((result)=>{
+      this.router.navigate(['/brackets'], {
+        queryParams: {
+          categoria_id: this.form.get('codigoc')?.value,
+        }
+      }).then(() => {
+        window.location.reload();
+      });
+    })
+  }
+  
+  assignPositionsToParticipants() {
+    // Clonar el array de participantes
+    const clonedParticipants = this.participants.map((participant: any) => ({ ...participant }));
+  
+    // Crear un mapa para almacenar la posición de cada participante según su ID
+    const positionMap = new Map<number, number>();
+  
+    // Recorrer los partidos para llenar el mapa con las posiciones
+    this.estructura.forEach((match: any) => {
+      if (match.opponent1 && match.opponent1.id !== null && match.opponent1.position !== undefined) {
+        positionMap.set(match.opponent1.id, match.opponent1.position);
+      }
+      if (match.opponent2 && match.opponent2.id !== null && match.opponent2.position !== undefined) {
+        positionMap.set(match.opponent2.id, match.opponent2.position);
+      }
+    });
+  
+    // Asignar las posiciones a los participantes clonados
+    clonedParticipants.forEach((participant: any) => {
+      const position = positionMap.get(participant.id);
+      participant.position = position !== undefined ? position : null;
+    });
+  
+    console.log(clonedParticipants);
+    this.participants = clonedParticipants;
+  }
+
+  findFigther(id: any) {
+    return this.participants.find((item: any) => item.id == id);
+  }
 }

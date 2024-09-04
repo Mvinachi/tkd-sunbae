@@ -1,5 +1,104 @@
-.active {
+.activeItem {
     font-family: Mariott;
     color: var(--secondary);
     font-weight: bolder;
 }
+
+/* Estilos para la superposición (overlay) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    z-index: 998;
+  }
+  
+
+/* Estilos básicos del sidebar */
+.sidebar {
+    z-index: 999;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: whitesmoke;
+    padding-top: 20px;
+    transition: 0.3s;
+    transform: translateX(-100%);
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  /* Estilos para el contenido principal */
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+  /* Estilos para el botón de toggle */
+  .toggle-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--primary);
+  }
+
+  .listButtons {
+    display: flex; gap: 1rem; align-items: center;
+  }
+
+  .title {
+    font-family: Mariott; color: var(--primary)
+  }
+  
+  @media (max-width: 955px) {
+
+    .listButtons, .title {
+        display: none;
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+
+    .sidebar {
+      width: 200px;
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  
+    .toggle-btn {
+      left: 10px;
+    }
+  }
+  
