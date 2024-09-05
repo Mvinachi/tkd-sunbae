@@ -27,7 +27,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getListadoPoom() {
-    this.http.post('http://localhost:3300/torneo/rondas', null)
+    this.http.post('https://tkd.onrender.com/torneo/rondas', null)
         .subscribe(
           (response: any) => {
             this.DataTablasPoom = response.data
@@ -39,7 +39,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getListado() {
-    this.http.post('http://localhost:3300/winners', null)
+    this.http.post('https://tkd.onrender.com/winners', null)
         .subscribe(
           (response: any) => {
             this.DataTablas = response.data
@@ -93,7 +93,7 @@ export class LeaderboardComponent implements OnInit {
 
     modal.afterClose.subscribe((result)=>{
       new Promise((resolve, reject) => {
-        this.http.post('http://localhost:3300/torneo/poomsae', null)
+        this.http.post('https://tkd.onrender.com/torneo/poomsae', null)
       .subscribe(
         (response: any) => {
           setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);

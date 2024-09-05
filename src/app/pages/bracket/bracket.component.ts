@@ -97,7 +97,7 @@ export class BracketComponent implements OnInit {
 }
 
 getStructure(id: any) {
-  this.http.get(`http://localhost:3300/brackets/${id}`)
+  this.http.get(`https://tkd.onrender.com/brackets/${id}`)
       .subscribe((data: any) => {
         this.estructura = data.data.match
         this.participants = data.data.participant
@@ -113,7 +113,7 @@ display() {
 }
 
 getCategoriasKyo() {
-    this.http.get('http://localhost:3300/categoriascombate')
+    this.http.get('https://tkd.onrender.com/categoriascombate')
       .subscribe((data: any) => {
         this.selectKyo = data.data
       }, error => {
@@ -122,7 +122,7 @@ getCategoriasKyo() {
   }
 
   getCategoriasPoom() {
-    this.http.get('http://localhost:3300/categoriaspoomsae')
+    this.http.get('https://tkd.onrender.com/categoriaspoomsae')
       .subscribe((data: any) => {
         this.selectPoom = data.data
       }, error => {
@@ -133,7 +133,7 @@ getCategoriasKyo() {
   getBrackets(id: any) {
 
     if (!this.secondTime) {
-      this.http.get(`http://localhost:3300/brackets/${id}`)
+      this.http.get(`https://tkd.onrender.com/brackets/${id}`)
       .subscribe((data: any) => {
 
         if (window.bracketsViewer) {
@@ -181,7 +181,7 @@ getCategoriasKyo() {
 
     modal.afterClose.subscribe((result)=>{
       new Promise((resolve, reject) => {
-        this.http.post('http://localhost:3300/brackets4all', null)
+        this.http.post('https://tkd.onrender.com/brackets4all', null)
       .subscribe(
         (response: any) => {
           setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);

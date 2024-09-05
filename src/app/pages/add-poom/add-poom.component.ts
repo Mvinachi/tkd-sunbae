@@ -44,7 +44,7 @@ export class AddPoomComponent implements OnInit {
         puntaje2: parseFloat(this.form.get('puntaje2')?.value)
     }
 
-      this.http.post('http://localhost:3300/torneo/puntaje', data)
+      this.http.post('https://tkd.onrender.com/torneo/puntaje', data)
         .subscribe(
           (response: any) => {
             this.modal.close()

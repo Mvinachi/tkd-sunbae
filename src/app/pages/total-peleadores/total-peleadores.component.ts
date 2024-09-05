@@ -40,7 +40,7 @@ export class TotalPeleadoresComponent implements OnInit {
   }
 
   getPeleadores() {
-    this.http.get('http://localhost:3300/torneo')
+    this.http.get('https://tkd.onrender.com/torneo')
       .subscribe((data: any) => {
         this.listOfData = data.data;
         this.filteredData = [...this.listOfData];
@@ -78,7 +78,7 @@ deleteForm(id: number) {
         id_deportista: id
       }
 
-      this.http.post('http://localhost:3300/torneo/eliminar', data)
+      this.http.post('https://tkd.onrender.com/torneo/eliminar', data)
       .subscribe(
         (response: any) => {
           const modal = this.modal.success({

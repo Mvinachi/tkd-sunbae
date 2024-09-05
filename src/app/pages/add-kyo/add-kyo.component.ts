@@ -52,7 +52,7 @@ export class AddKyoComponent implements OnInit {
         score2: parseInt(this.form.get('puntaje2')?.value)
       }
     
-      this.http.post('http://localhost:3300/registrar_ganador', data)
+      this.http.post('https://tkd.onrender.com/registrar_ganador', data)
         .subscribe(
           (response: any) => {
             this.modal.close()
