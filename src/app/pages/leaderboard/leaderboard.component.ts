@@ -84,4 +84,29 @@ export class LeaderboardComponent implements OnInit {
     window.history.back()
   }
 
+  generatePoom() {
+
+    const modal = this.modal.warning({
+      nzTitle: 'Atencion',
+      nzContent: 'Se volveran a generar nuevamente las tabla de clasificaciones de todas las categorias Poomsae y se borrara la formacion existente.',
+    });
+
+    modal.afterClose.subscribe((result)=>{
+      new Promise((resolve, reject) => {
+        this.http.post('http://localhost:3300/torneo/poomsae', null)
+      .subscribe(
+        (response: any) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+          window.location.reload()
+        },
+        error => {
+          console.error('Error al enviar los datos', error);
+          reject
+        }
+      );
+      }).catch(() => console.log('Oops errors!'))
+  })
+    
+  }
+
 }

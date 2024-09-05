@@ -73,7 +73,7 @@
         <div nz-col [nzLg]="{ span: 12}" [nzMd]="{span:12}" [nzXs]="{ span: 24}">
             <div style="display: flex; flex-direction: column; width: 100%;">
                 <label [ngClass]="{'error': form.get('peso')!.invalid && form.get('peso')!.dirty}" for="" style="margin-bottom: 6px; color: var(--primary); font-weight: bold;">Peso</label>
-                    <nz-input-number [nzStatus]="form.get('peso')!.invalid && form.get('peso')!.dirty ? 'error' : ''" [(ngModel)]="demoValue" [nzMin]="1" [nzSize]="'large'"
+                    <nz-input-number [nzStatus]="form.get('peso')!.invalid && form.get('peso')!.dirty ? 'error' : ''" [(ngModel)]="nzModalData.peleador.peso" [nzMin]="1" [nzSize]="'large'"
                     [nzStep]="1"
                     [nzFormatter]="formatterKg"
                     [nzParser]="parserKg" formControlName="peso" style="width: 100%"></nz-input-number>

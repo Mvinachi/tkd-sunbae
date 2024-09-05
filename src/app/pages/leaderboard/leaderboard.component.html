@@ -15,6 +15,17 @@
   </div>
 <section style="padding: 2rem;">
   <div nz-row [nzGutter]="[16, 12]">
+
+    <nz-divider *ngIf="superU == 'admin'" style="font-family: Mariott; color: var(--primary);"
+          nzText="Funciones de Administrador"></nz-divider>
+        <div *ngIf="superU == 'admin'" nz-col [nzLg]="{ span: 24}" [nzMd]="{span:24}" [nzXs]="{ span: 24}"
+          style="align-items: center; display: flex; justify-content: center;">
+          <button (click)="generatePoom()"
+            style=" cursor: pointer; padding: 1rem 1.5rem; background-color: var(--primary); border: none; border-radius: 8px;">
+            <p style="color: white; font-weight: bold; margin: 0;">Generar brackets</p>
+          </button>
+        </div>
+
     <nz-divider style="font-family: Mariott; color: var(--primary);" [nzText]="'Poomsae'"></nz-divider>     
       <div *ngFor="let item of DataTablasPoom" nz-col [nzLg]="{ span: 12}" [nzMd]="{span:24}" [nzXs]="{ span: 24}">
           <nz-divider style="font-family: Mariott; color: var(--primary); white-space: break-spaces;" [nzText]="item.nombre_categoria" nzOrientation="left"></nz-divider>
