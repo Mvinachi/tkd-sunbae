@@ -77,7 +77,7 @@ export class EditPeleadorComponent implements OnInit {
         "hospedaje": this.form.get('hospedaje')?.value,
     }
 
-      this.http.put('https://tkd.onrender.com/torneo/editar', data)
+      this.http.put('https://tkd-production.up.railway.app/torneo/editar', data)
         .subscribe(
           (response: any) => {
             this.modal.close()

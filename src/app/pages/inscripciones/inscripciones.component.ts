@@ -84,7 +84,7 @@ export class InscripcionesComponent implements OnInit {
       nzContent: 'Se volveran a generar nuevamente la tabla de clasificaciones poomsae de todas las categorias y se borrara las existentes.',
       nzOnOk: () =>
         new Promise((resolve, reject) => {
-          this.http.post('https://tkd.onrender.com/torneo/poomsae', null)
+          this.http.post('https://tkd-production.up.railway.app/torneo/poomsae', null)
         .subscribe(
           (response: any) => {
             setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
@@ -161,7 +161,7 @@ export class InscripcionesComponent implements OnInit {
         id_categorias: this.form.get('modalidad')?.value == 'K' ? this.combineCategorias(this.form.get('kyoLista')?.value) : this.combineCategorias(this.form.get('poomLista')?.value)
     }
 
-      this.http.post(this.form.get('modalidad')?.value == 'K' ? 'https://tkd.onrender.com/inscribirdeportistacombate' : 'https://tkd.onrender.com/inscribirdeportistapoomsae', newData)
+      this.http.post(this.form.get('modalidad')?.value == 'K' ? 'https://tkd-production.up.railway.app/inscribirdeportistacombate' : 'https://tkd-production.up.railway.app/inscribirdeportistapoomsae', newData)
       .subscribe(
         (response: any) => {
           const modal = this.modal.success({
@@ -188,7 +188,7 @@ export class InscripcionesComponent implements OnInit {
   }
 
   getCategoriasKyo() {
-    this.http.get('https://tkd.onrender.com/categoriascombate')
+    this.http.get('https://tkd-production.up.railway.app/categoriascombate')
       .subscribe((data: any) => {
         this.selectKyo = data.data
       }, error => {
@@ -197,7 +197,7 @@ export class InscripcionesComponent implements OnInit {
   }
 
   getCategoriasPoom() {
-    this.http.get('https://tkd.onrender.com/categoriaspoomsae')
+    this.http.get('https://tkd-production.up.railway.app/categoriaspoomsae')
       .subscribe((data: any) => {
         this.selectPoom = data.data
       }, error => {
