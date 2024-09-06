@@ -42,11 +42,31 @@ export class TotalPeleadoresComponent implements OnInit {
   getPeleadores() {
     this.http.get('https://tkd-production.up.railway.app/torneo')
       .subscribe((data: any) => {
-        this.listOfData = data.data;
+        this.listOfData = this.transformarDatos(data.data);
         this.filteredData = [...this.listOfData];
       }, error => {
         console.error('Error al obtener los datos', error);
       });
+  }
+
+  transformarDatos(deportistas: any[]): any[] {
+    return deportistas.map(deportista => {
+      // Cambiar 'M' a 'Masculino' y 'F' a 'Femenino'
+      if (deportista.sexo === 'M') {
+        deportista.sexo = 'Masculino';
+      } else if (deportista.sexo === 'F') {
+        deportista.sexo = 'Femenino';
+      }
+
+      deportista.nacimiento = String(this.calculateAge(deportista.nacimiento))
+  
+      // Cambiar 'combate' a 'kyorugui' en modalidad
+      if (deportista.modalidad === 'combate') {
+        deportista.modalidad = 'kyorugui';
+      }
+  
+      return deportista;
+    });
   }
 
   searchData(): void {
@@ -54,9 +74,11 @@ export class TotalPeleadoresComponent implements OnInit {
     let fields: any[] = [
       'nombre',
       'apellido',
+      'nacimiento',
       'club',
       'sexo',
       'peso',
+      'categorias',     
       'modalidad',
       'activo'
     ]

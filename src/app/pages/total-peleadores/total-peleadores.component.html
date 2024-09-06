@@ -36,9 +36,9 @@
           @for (data of basicTable.data; track data) {
             <tr>
               <td>{{ data.nombre }} {{ data.apellido }}</td>
-              <td>{{ calculateAge(data.nacimiento) }}</td>
+              <td>{{ data.nacimiento }}</td>
               <td>{{ data.club }}</td>
-              <td>{{ data.sexo == 'F' ? 'Femenino' : 'Masculino' }}</td>
+              <td>{{ data.sexo }}</td>
               <td>{{ data.peso }}</td>
               <td>
                 <p *ngFor="let item of data.categorias" style="margin: 0;">{{ item }}</p>
